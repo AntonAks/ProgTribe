@@ -209,7 +209,7 @@
 
       <div class="row">
         <div class="col-lg-3 col-md-6">
-          <div class="card">
+          <div class="card mt-4">
             <div class="card-body">
               <img src= {% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
               <h3>{{ context_data.author1 }}</h3>
@@ -220,7 +220,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <div class="card">
+          <div class="card mt-4">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
               <h3>{{ context_data.author3 }}</h3>
@@ -231,7 +231,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <div class="card">
+          <div class="card mt-4">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
               <h3>{{ context_data.author4 }}</h3>
@@ -242,7 +242,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6">
-          <div class="card">
+          <div class="card mt-4">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
               <h3>{{ context_data.author4 }}</h3>
@@ -316,12 +316,9 @@
   </footer>
 
 
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
+  <script src= {% static 'js/jquery-3.4.1.min.js' %}></script>
+  <script src= {% static 'js/popper.min.js' %}></script>
+  <script src= {% static 'js/bootstrap.min.js'%}></script>
 
   <script>
     // Get the current year for the copyright
