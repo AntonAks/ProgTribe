@@ -27,11 +27,11 @@
           {% comment %} <li class="nav-item"> {% endcomment %}
             {% comment %} <a href="#home" class="nav-link">Home</a> {% endcomment %}
           {% comment %} </li> {% endcomment %}
-          <li class="nav-item">
+          {% comment %} <li class="nav-item">
             <a href="#about" class="nav-link">About</a>
-          </li>
+          </li> {% endcomment %}
           <li class="nav-item">
-            <a href="#authors" class="nav-link">Meet The Authors</a>
+            <a href="#authors" class="nav-link">Meet Members</a>
           </li>
           <li class="nav-item">
             <a href="#contact" class="nav-link">Contact</a>
@@ -50,10 +50,10 @@
             <h1 class="display-2 mt-5 pt-5">
             Comming soon...
             </h1>
-            <p class="lead"></p>
-            <a href="#" class="btn btn-outline-secondary btn-lg text-white">
+            <p class="lead">Small portal about achievements of goals and software development</p>
+            {% comment %} <a href="#" class="btn btn-outline-secondary btn-lg text-white">
               <i class="fas fa-arrow-right"></i> Read More
-            </a>
+            </a> {% endcomment %}
           </div>
         </div>
       </div>
@@ -83,35 +83,27 @@
   <section id="boxes" class="py-5">
     <div class="container">
       <div class="row">
-        <div class="col-md-3">
-          <div class="card text-center border-primary mb-resp">
+        <div class="col-md-4">
+          <div class="card text-center border-secondary mb-resp">
             <div class="card-body">
-              <h3 class="text-primary">Be Better</h3>
+              <h3 class="text-secondary">Articles</h3>
               <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card text-center bg-primary text-white mb-resp">
+        <div class="col-md-4">
+          <div class="card text-center bg-secondary text-white mb-resp">
             <div class="card-body">
-              <h3>Be Smarter</h3>
+              <h3>Quizes</h3>
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card text-center border-primary mb-resp">
+        <div class="col-md-4">
+          <div class="card text-center border-secondary mb-resp">
             <div class="card-body">
-              <h3 class="text-primary">Be Faster</h3>
+              <h3 class="text-secondary">Community</h3>
               <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card text-center bg-primary text-white">
-            <div class="card-body">
-              <h3>Be Stronger</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
             </div>
           </div>
         </div>
@@ -203,8 +195,8 @@
       <div class="row">
         <div class="col">
           <div class="info-header mb-5">
-            <h1 class="text-primary pb-3">
-              Meet The Authors
+            <h1 class="text-secondary pb-3">
+              Meet Our Members
             </h1>
             <p class="lead">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laborum numquam aperiam dolores a porro!
@@ -218,27 +210,9 @@
           <div class="card">
             <div class="card-body">
               <img src= {% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>Susan Williams</h3>
-              <h5 class="text-muted">Lead Writer</h5>
+              <h3>{{ context_data.author1 }}</h3>
+              <h5 class="text-muted">role</h5>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-              <div class="d-flex justify-content-center">
-                <div class="p-4">
-                  <a href="http://facebook.com">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://twitter.com">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://instagram.com">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
@@ -247,27 +221,9 @@
           <div class="card">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>Grace Smith</h3>
-              <h5 class="text-muted">Co-Writer</h5>
+              <h3>{{ context_data.author3 }}</h3>
+              <h5 class="text-muted">role</h5>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-              <div class="d-flex justify-content-center">
-                <div class="p-4">
-                  <a href="http://facebook.com">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://twitter.com">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://instagram.com">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
@@ -276,27 +232,9 @@
           <div class="card">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>John Doe</h3>
-              <h5 class="text-muted">Editor</h5>
+              <h3>{{ context_data.author4 }}</h3>
+              <h5 class="text-muted">role</h5>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-              <div class="d-flex justify-content-center">
-                <div class="p-4">
-                  <a href="http://facebook.com">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://twitter.com">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://instagram.com">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
@@ -305,27 +243,9 @@
           <div class="card">
             <div class="card-body">
               <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>Kevin Swanson</h3>
-              <h5 class="text-muted">Designer</h5>
+              <h3>{{ context_data.author4 }}</h3>
+              <h5 class="text-muted">role</h5>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-              <div class="d-flex justify-content-center">
-                <div class="p-4">
-                  <a href="http://facebook.com">
-                    <i class="fab fa-facebook"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://twitter.com">
-                    <i class="fab fa-twitter"></i>
-                  </a>
-                </div>
-                <div class="p-4">
-                  <a href="http://instagram.com">
-                    <i class="fab fa-instagram"></i>
-                  </a>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
@@ -372,15 +292,15 @@
           </form>
         </div>
 
-        <div class="col-lg-3 align-self-center">
+        {% comment %} <div class="col-lg-3 align-self-center">
           <img src= {% static 'img/mlogo.png' %} alt="" class="img-fluid">
-        </div>
+        </div> {% endcomment %}
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer id="main-footer" class="py-5 bg-primary text-white">
+  <footer id="main-footer" class="py-3 bg-secondary text-white">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-6 ml-auto">

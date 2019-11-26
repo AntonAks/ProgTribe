@@ -12,9 +12,9 @@
 #showcase {
   position: relative;
   background: url("../img/mountains.jpg");
-  min-height: 400px; }
+  min-height: 500px; }
   #showcase .primary-overlay {
-    background: rgba(50, 146, 166, 0.6);
+    background: rgba(82, 90, 92, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -29,7 +29,7 @@
 #authors img {
   margin-top: -50px; }
 #authors .card:hover {
-  background: #3292a6;
+  background: #2d3536;
   color: #fff; }
 #authors .fab {
   color: #fff; }
