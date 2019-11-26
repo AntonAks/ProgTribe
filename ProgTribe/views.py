@@ -16,8 +16,8 @@ class HomePageView(TemplateView):
         return context
     
 
-    template_name = 'index.html'
+    template_name = 'home.html'
 
 
 class IndexPageView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'home.html'
