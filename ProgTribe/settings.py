@@ -53,6 +53,9 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.core',
 
+
+    'wagtailcodeblock',
+
     'modelcluster',
     'taggit',
 
@@ -75,6 +78,18 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
 ]
+
+WAGTAIL_CODE_BLOCK_LANGUAGES = (
+    ('bash', 'Bash/Shell'),
+    ('css', 'CSS'),
+    ('diff', 'diff'),
+    ('html', 'HTML'),
+    ('javascript', 'Javascript'),
+    ('json', 'JSON'),
+    ('python', 'Python'),
+    ('scss', 'SCSS'),
+    ('yaml', 'YAML'),
+)
 
 ROOT_URLCONF = 'ProgTribe.urls'
 
