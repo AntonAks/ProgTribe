@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+
 class HomePageView(TemplateView):
 
     context_data = {
@@ -14,7 +15,6 @@ class HomePageView(TemplateView):
         context = super(HomePageView, self).get_context_data(**kwargs)
         context["context_data"] = self.context_data
         return context
-    
 
     template_name = 'home.html'
 

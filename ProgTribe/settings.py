@@ -79,6 +79,7 @@ MIDDLEWARE = [
 
 ]
 
+WAGTAIL_CODE_BLOCK_THEME = 'coy'
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('bash', 'Bash/Shell'),
     ('css', 'CSS'),
@@ -89,6 +90,7 @@ WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('python', 'Python'),
     ('scss', 'SCSS'),
     ('yaml', 'YAML'),
+    ('r', 'R'),
 )
 
 ROOT_URLCONF = 'ProgTribe.urls'

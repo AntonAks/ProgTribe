@@ -12,6 +12,7 @@ venv/
 /static/
 wagtail_env/
 .vscode/
+.idea/
 
 ### web deploy config ###
 web.config

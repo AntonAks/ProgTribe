@@ -7,8 +7,10 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
 
-class BlogIndexPage(Page):
+
+class IndexBlogPage(Page):
     pass
+
 
 
 class BlogPage(Page):
@@ -18,22 +20,20 @@ class BlogPage(Page):
         null=True,
     )
 
-    image = models.ImageField(blank=True, null=True)
-
     content = StreamField(
         [
             ('heading', blocks.CharBlock()),
+            ('advice_hint', blocks.RichTextBlock()),
+            ('warning_hint', blocks.RichTextBlock()),
             ('content', blocks.RichTextBlock()),
             ('image', ImageChooserBlock()),
             ('codeblock', CodeBlock(label='Code'))
         ],
         blank=True,
         null=True,
-
     )
 
     content_panels = Page.content_panels + [
-        FieldPanel('description'), 
-        FieldPanel('image'),
+        FieldPanel('description'),
         StreamFieldPanel('content'),
     ]
