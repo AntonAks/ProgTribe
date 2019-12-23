@@ -32,12 +32,36 @@ ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 # Application definition
 
 INSTALLED_APPS = [
+    # DJANGO STUFF
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # WAGTAIL STUFF
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
+
+
+    'wagtailcodeblock',
+
+    'modelcluster',
+    'taggit',
+
+    # NEW APPS
+    'blog.apps.BlogConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -48,16 +72,35 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # WAGTAIL STUFF
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
 ]
 
+WAGTAIL_CODE_BLOCK_THEME = 'coy'
+WAGTAIL_CODE_BLOCK_LANGUAGES = (
+    ('bash', 'Bash/Shell'),
+    ('css', 'CSS'),
+    ('diff', 'diff'),
+    ('html', 'HTML'),
+    ('javascript', 'Javascript'),
+    ('json', 'JSON'),
+    ('python', 'Python'),
+    ('scss', 'SCSS'),
+    ('yaml', 'YAML'),
+    ('r', 'R'),
+)
+
 ROOT_URLCONF = 'ProgTribe.urls'
+
+WAGTAIL_SITE_NAME = 'ProgTribeBlog'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
-        ],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +161,7 @@ USE_TZ = True
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'ProgTribe/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
