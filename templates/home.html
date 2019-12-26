@@ -6,64 +6,61 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href={% static 'css/bootstrap.css' %}>
-  <link rel="stylesheet" href= {% static 'css/style.css' %}>
-  <title>ProgTribe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href={% static 'css/bootstrap.css' %}>
+    <link rel="stylesheet" href= {% static 'css/style.css' %}>
+    <title>ProgTribe</title>
 </head>
 
 <body id="home" data-spy="scroll" data-target="#main-nav">
-  <nav class="navbar navbar-expand-md navbar-light fixed-top py-1" id="main-nav">
+<nav class="navbar navbar-expand-md navbar-light fixed-top py-1" id="main-nav">
     <div class="container">
-      <a href="#home" class="navbar-brand">
-        <img src= {% static 'img/mlogo.png' %} width="190" height="50" alt="">
-        <h3 class="d-inline align-middle"></h3>
-      </a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav ml-auto">
-          {% comment %} <li class="nav-item"> {% endcomment %}
-            {% comment %} <a href="#home" class="nav-link">Home</a> {% endcomment %}
-          {% comment %} </li> {% endcomment %}
-          {% comment %} <li class="nav-item">
-            <a href="#about" class="nav-link">About</a>
-          </li> {% endcomment %}
-          <li class="nav-item">
-            <a href="#authors" class="nav-link">Meet Members</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
-      </div>
+        <a href="/" class="navbar-brand">
+            <img src= {% static 'img/mlogo.png' %} width="190" height="50" alt="">
+            <h3 class="d-inline align-middle"></h3>
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#authors" class="nav-link">Meet Members</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </nav>
+</nav>
 
-  <!-- SHOWCASE -->
-  <section id="showcase" class="py-5">
+<!-- SHOWCASE -->
+<section id="showcase" class="py-5">
     <div class="primary-overlay text-white">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 text-center">
-            <h1 class="display-2 mt-5 pt-5">
-            Comming soon...
-            </h1>
-            <p class="lead">Small portal about achievements of goals and software development</p>
-            {% comment %} <a href="#" class="btn btn-outline-secondary btn-lg text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 text-center">
+                    <h1 class="display-2 mt-5 pt-5">
+                        Comming soon...
+                    </h1>
+                    <p class="lead">Small portal about achievements of goals and software development</p>
+                    {% comment %} <a href="#" class="btn btn-outline-secondary btn-lg text-white">
               <i class="fas fa-arrow-right"></i> Read More
             </a> {% endcomment %}
-          </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- NEWSLETTER -->
-  {% comment %} <section id="newsletter" class="bg-dark text-white py-5">
+<!-- NEWSLETTER -->
+{% comment %} <section id="newsletter" class="bg-dark text-white py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -81,37 +78,37 @@
     </div>
   </section> {% endcomment %}
 
-  <!-- BOXES -->
-  <section id="boxes" class="py-5">
+<!-- BOXES -->
+<section id="boxes" class="py-5">
     <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card text-center border-secondary mb-resp">
-            <div class="card-body">
-              <h3 class="text-secondary">Articles</h3>
-              <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center border-secondary mb-resp">
+                    <div class="card-body">
+                        <h3 class="text-secondary">Articles</h3>
+                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-center bg-secondary text-white mb-resp">
-            <div class="card-body">
-              <h3>Quizes</h3>
-              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+            <div class="col-md-4">
+                <div class="card text-center bg-secondary text-white mb-resp">
+                    <div class="card-body">
+                        <h3>Quizes</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card text-center border-secondary mb-resp">
-            <div class="card-body">
-              <h3 class="text-secondary">Community</h3>
-              <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+            <div class="col-md-4">
+                <div class="card text-center border-secondary mb-resp">
+                    <div class="card-body">
+                        <h3 class="text-secondary">Community</h3>
+                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 {% comment %} 
   <!-- ABOUT / WHY SECTION -->
   <section id="about" class="py-5 text-center bg-light">
@@ -191,136 +188,136 @@
     </div>
   </section> {% endcomment %}
 
-  <!-- AUTHORS -->
-  <section id="authors" class="my-5 text-center">
+<!-- AUTHORS -->
+<section id="authors" class="my-5 text-center">
     <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="info-header mb-5">
-            <h1 class="text-secondary pb-3">
-              Meet Our Members
-            </h1>
-            <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laborum numquam aperiam dolores a porro!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-6">
-          <div class="card mt-4">
-            <div class="card-body">
-              <img src= {% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>{{ context_data.author1 }}</h3>
-              <h5 class="text-muted">role</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+        <div class="row">
+            <div class="col">
+                <div class="info-header mb-5">
+                    <h1 class="text-secondary pb-3">
+                        Meet Our Members
+                    </h1>
+                    <p class="lead">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laborum numquam aperiam dolores a porro!
+                    </p>
+                </div>
             </div>
-          </div>
         </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="card mt-4">
-            <div class="card-body">
-              <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>{{ context_data.author3 }}</h3>
-              <h5 class="text-muted">role</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <img src= {% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>{{ context_data.author1 }}</h3>
+                        <h5 class="text-muted">role</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="card mt-4">
-            <div class="card-body">
-              <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>{{ context_data.author4 }}</h3>
-              <h5 class="text-muted">role</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+            <div class="col-lg-3 col-md-6">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>{{ context_data.author3 }}</h3>
+                        <h5 class="text-muted">role</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-3 col-md-6">
-          <div class="card mt-4">
-            <div class="card-body">
-              <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-              <h3>{{ context_data.author4 }}</h3>
-              <h5 class="text-muted">role</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+            <div class="col-lg-3 col-md-6">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>{{ context_data.author4 }}</h3>
+                        <h5 class="text-muted">role</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
+                        <h3>{{ context_data.author4 }}</h3>
+                        <h5 class="text-muted">role</h5>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="bg-light py-5">
+<!-- CONTACT -->
+<section id="contact" class="bg-light py-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-9">
-          <h3>Get In Touch</h3>
-          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, temporibus!</p>
-          <form>
-            <div class="input-group input-group-lg mb-3">
-              <div class="input-group-prepend">
+        <div class="row">
+            <div class="col-lg-9">
+                <h3>Get In Touch</h3>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, temporibus!</p>
+                <form>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
                 <span class="input-group-text">
                   <i class="fas fa-user"></i>
                 </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Name">
-            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
 
-            <div class="input-group input-group-lg mb-3">
-              <div class="input-group-prepend">
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
                 <span class="input-group-text">
                   <i class="fas fa-envelope"></i>
                 </span>
-              </div>
-              <input type="text" class="form-control" placeholder="Email">
-            </div>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Email">
+                    </div>
 
-            <div class="input-group input-group-lg mb-3">
-              <div class="input-group-prepend">
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
                 <span class="input-group-text">
                   <i class="fas fa-pencil-alt"></i>
                 </span>
-              </div>
-              <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+                        </div>
+                        <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
+                </form>
             </div>
 
-            <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
-          </form>
-        </div>
-
-        {% comment %} <div class="col-lg-3 align-self-center">
+            {% comment %} <div class="col-lg-3 align-self-center">
           <img src= {% static 'img/mlogo.png' %} alt="" class="img-fluid">
         </div> {% endcomment %}
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="main-footer" class="py-3 bg-secondary text-white">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-6 ml-auto">
-          <p class="lead">
-            Copyright &copy;
-            <span id="year"></span>
-          </p>
         </div>
-      </div>
     </div>
-  </footer>
+</section>
+
+<!-- FOOTER -->
+<footer id="main-footer" class="py-3 bg-secondary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-6 ml-auto">
+                <p class="lead">
+                    Copyright &copy;
+                    <span id="year"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
-  <script src= {% static 'js/jquery-3.4.1.min.js' %}></script>
-  <script src= {% static 'js/popper.min.js' %}></script>
-  <script src= {% static 'js/bootstrap.min.js'%}></script>
+<script src= {% static 'js/jquery-3.4.1.min.js' %}></script>
+<script src= {% static 'js/popper.min.js' %}></script>
+<script src= {% static 'js/bootstrap.min.js'%}></script>
 
-  <script>
+<script>
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
 
@@ -329,20 +326,20 @@
 
     // Smooth Scrolling
     $("#main-nav a").on('click', function (event) {
-      if (this.hash !== "") {
-        event.preventDefault();
+        if (this.hash !== "") {
+            event.preventDefault();
 
-        const hash = this.hash;
+            const hash = this.hash;
 
-        $('html, body').animate({
-          scrollTop: $(hash).offset().top
-        }, 800, function () {
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function () {
 
-          window.location.hash = hash;
-        });
-      }
+                window.location.hash = hash;
+            });
+        }
     });
-  </script>
+</script>
 </body>
 
 </html>

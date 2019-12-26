@@ -21,3 +21,7 @@ class HomePageView(TemplateView):
 
 class IndexPageView(TemplateView):
     template_name = 'home.html'
+
+
+class BlogPageView(TemplateView):
+    template_name = 'blog/blog_page.html'
