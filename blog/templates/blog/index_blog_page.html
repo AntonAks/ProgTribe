@@ -17,6 +17,11 @@
         <div class="lead">{{ self.banner_subtitle|richtext }}</div>
         <a class="btn btn-primary btn-sm" href="#" role="button">{{ self.banner_cta }}</a>
     </div>
+
+    {% for page in self.get_child_pages %}
+        <a href="{{page.url_path}}">url_path: {{ page.url_path }}</p>
+    {% endfor %}
+
     </body>
 
 

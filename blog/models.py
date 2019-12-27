@@ -16,8 +16,9 @@ class IndexBlogPage(Page):
     template = "blog/index_blog_page.html"
     max_count = 1
 
+
     banner_title = models.CharField(max_length=100, blank=False, null=True)
-    banner_subtitle = RichTextField(features=["bold", "italic"])
+    banner_subtitle = RichTextField(features=["bold", "italic"], default='')
     banner_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -44,6 +45,11 @@ class IndexBlogPage(Page):
     class Meta:
         verbose_name = 'Blog Home Page'
         verbose_name_plural = 'Blog Home Pages'
+
+
+    def get_child_pages(self):
+        pages = Page.get_children(self)
+        return pages
 
 
 class SimplePage(Page):
