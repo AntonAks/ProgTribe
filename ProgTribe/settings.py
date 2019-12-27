@@ -27,7 +27,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 DEBUG = local_settings.DEBUG
 
 ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
-
+INTERNAL_IPS = local_settings.INTERNAL_IPS
 
 # Application definition
 
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'debug_toolbar',
 
     # WAGTAIL STUFF
     'wagtail.contrib.forms',
@@ -61,6 +63,7 @@ INSTALLED_APPS = [
 
     # NEW APPS
     'blog.apps.BlogConfig',
+    'streams.apps.StreamsConfig',
 
 ]
 
@@ -76,6 +79,8 @@ MIDDLEWARE = [
     # WAGTAIL STUFF
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
 ]
 

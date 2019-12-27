@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 {% extends "blog/_base_blog.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 
 {% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Home Blog Page</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Home Blog Page</title>
+    </head>
 
-</body>
+    <body>
+    <div class="jumbotron">
+        {% image self.banner_image width-1200 class="img-fluid" alt="Responsive image" %}
+        <h1 class="display-4">{{ self.banner_title }}</h1>
+        <div class="lead">{{ self.banner_subtitle|richtext }}</div>
+        <a class="btn btn-primary btn-sm" href="#" role="button">{{ self.banner_cta }}</a>
+    </div>
+    </body>
+
+
 
 {% endblock content %}

@@ -12,10 +12,16 @@ from .views import HomePageView, IndexPageView, BlogPageView
 urlpatterns = [
                   path('', HomePageView.as_view(), name='home'),
                   path('admin/', admin.site.urls),
-                  # path('blog/', BlogPageView.as_view(), name='blog'),
                   path('index/', IndexPageView.as_view(), name='index'),
 
                   re_path(r'^cms/', include(wagtailadmin_urls), name='cms'),
                   re_path(r'^documents/', include(wagtaildocs_urls)),
                   re_path(r'^blog/', include(wagtail_urls)),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+                      path('__debug__/', include(debug_toolbar.urls)),
+                  ] + urlpatterns
