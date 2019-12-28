@@ -10,3 +10,7 @@ class TitleAndTextBlock(blocks.StructBlock):
     class Meta:
         icon = "edit"
         label = "Title & Text"
+
+
+class IntroBlock(blocks.StructBlock):
+    intro = blocks.CharBlock(required=True)

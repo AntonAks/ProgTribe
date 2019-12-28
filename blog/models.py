@@ -52,6 +52,13 @@ class IndexBlogPage(Page):
         return pages
 
 
+    def get_context(self, request):
+        context = super(IndexBlogPage, self).get_context(request)
+        context['sub_pages'] = self.get_children().specific()
+        print(context['sub_pages'])
+        return context
+
+
 class SimplePage(Page):
     template = "blog/simple_page.html"
 
@@ -80,6 +87,8 @@ class BlogPage(Page):
         related_name='+'
     )
 
+    text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=300)
+
     content = StreamField(
         [
             ('heading', blocks.CharBlock()),
@@ -95,5 +104,9 @@ class BlogPage(Page):
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('title_image'),
+        FieldPanel('text_intro'),
         StreamFieldPanel('content'),
     ]
+
+    def get_title_image(self):
+        return self.title_image
