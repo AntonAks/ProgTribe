@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
@@ -15,7 +15,6 @@ class IndexBlogPage(Page):
     """ Home page for blog """
     template = "blog/index_blog_page.html"
     max_count = 1
-
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
     banner_subtitle = RichTextField(features=["bold", "italic"], default='')
@@ -46,16 +45,27 @@ class IndexBlogPage(Page):
         verbose_name = 'Blog Home Page'
         verbose_name_plural = 'Blog Home Pages'
 
-
     def get_child_pages(self):
         pages = Page.get_children(self)
         return pages
 
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        all_child_pages = self.get_children().specific().order_by('-first_published_at')
 
-    def get_context(self, request):
-        context = super(IndexBlogPage, self).get_context(request)
-        context['sub_pages'] = self.get_children().specific()
-        print(context['sub_pages'])
+        paginator = Paginator(all_child_pages, 3)
+
+        page = request.GET.get("page")
+
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+        context["sub_pages"] = posts
+
         return context
 
 
