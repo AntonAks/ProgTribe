@@ -14,6 +14,7 @@ from streams import custom_blocks
 class IndexBlogPage(Page):
     """ Home page for blog """
     template = "blog/index_blog_page.html"
+    template = "blog/home.html"
     max_count = 1
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
@@ -65,7 +66,8 @@ class IndexBlogPage(Page):
             posts = paginator.page(paginator.num_pages)
 
         context["sub_pages"] = posts
-
+        context["last_post"] = all_child_pages[0]
+        context["last_post_2"] = all_child_pages[1]
         return context
 
 
