@@ -1,14 +1,12 @@
-# ProgTribe Project
+# WagSite Project
 
 ## About 
-This is the web application build with Django and Wagtail.
-Basic functionality:
-* Blog (Wagtail CMS)
-* Quiz related with IT knowledg (in dev) 
+This is a template application for basic website, built with Django and Wagtail. 
+
 
 ## How to install and run
 1. clone dev branch 
-2. install virtual env `virtualenv -p python3.7 <name>`
+2. install virtual env `virtualenv -p python3.8 <name>`
 3. install requirements: pip3 install -r requirements.txt
 4. create local_settings.py (SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASES, INTERNAL_IPS)
 5. `python3 manage.py makemigrations blog`
@@ -17,7 +15,7 @@ Basic functionality:
 8. `python3 manage.py runserver`
 8. `127.0.0.1:8000/cms/` - opens wagtail CMS engine
 
-Wagtail CMS simple guide
+## Wagtail CMS simple guide
 1. Open `Page`
 2. Open `+ ADD CHILD PAGE`
 3. Open `BlogPage`

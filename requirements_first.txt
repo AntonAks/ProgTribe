@@ -1,7 +1,7 @@
-beautifulsoup4==4.9
+beautifulsoup4==4.6.0
 certifi==2019.9.11
 chardet==3.0.4
-Django==3.0.6
+Django==2.2.7
 django-debug-toolbar==2.1
 django-modelcluster==5.0
 django-taggit==1.1.0
@@ -18,7 +18,7 @@ six==1.13.0
 sqlparse==0.3.0
 Unidecode==1.1.1
 urllib3==1.25.7
-wagtail==2.9
+wagtail==2.7
 wagtailcodeblock==1.17.1.0
 webencodings==0.5.1
 Willow==1.3

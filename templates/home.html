@@ -1,345 +1,221 @@
-<!-- templates/home.html -->
-
 {% load static %}
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href={% static 'css/bootstrap.css' %}>
     <link rel="stylesheet" href= {% static 'css/style.css' %}>
-    <title>ProgTribe</title>
+    <title>WagSite</title>
 </head>
 
-<body id="home" data-spy="scroll" data-target="#main-nav">
-<nav class="navbar navbar-expand-md navbar-light fixed-top py-1" id="main-nav">
+
+  <body>
     <div class="container">
-        <a href="/" class="navbar-brand">
-            <img src= {% static 'img/mlogo.png' %} width="190" height="50" alt="">
-            <h3 class="d-inline align-middle"></h3>
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <a class="text-muted" href="#">Subscribe</a>
+      </div>
+      <div class="col-4 text-center">
+        <a class="blog-header-logo text-dark" href="#">WagSite Name</a>
+      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center">
+        <a class="text-muted" href="#" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24" focusable="false"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
         </a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="/blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#authors" class="nav-link">Meet Members</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-            </ul>
-        </div>
+        <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
+      </div>
     </div>
-</nav>
+  </header>
 
-<!-- SHOWCASE -->
-<section id="showcase" class="py-5">
-    <div class="primary-overlay text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7 text-center">
-                    <h1 class="display-2 mt-5 pt-5">
-                        Comming soon...
-                    </h1>
-                    <p class="lead">Small portal about achievements of goals and software development</p>
-                    {% comment %} <a href="#" class="btn btn-outline-secondary btn-lg text-white">
-              <i class="fas fa-arrow-right"></i> Read More
-            </a> {% endcomment %}
-                </div>
-            </div>
-        </div>
+  <!--
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <a class="p-2 text-muted" href="#">World</a>
+      <a class="p-2 text-muted" href="#">U.S.</a>
+      <a class="p-2 text-muted" href="#">Technology</a>
+      <a class="p-2 text-muted" href="#">Design</a>
+      <a class="p-2 text-muted" href="#">Culture</a>
+      <a class="p-2 text-muted" href="#">Business</a>
+      <a class="p-2 text-muted" href="#">Politics</a>
+      <a class="p-2 text-muted" href="#">Opinion</a>
+      <a class="p-2 text-muted" href="#">Science</a>
+      <a class="p-2 text-muted" href="#">Health</a>
+      <a class="p-2 text-muted" href="#">Style</a>
+      <a class="p-2 text-muted" href="#">Travel</a>
+    </nav>
+  </div>
+-->
+  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">Title of a WagSite Project</h1>
+      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
+      <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
     </div>
-</section>
+  </div>
 
-<!-- NEWSLETTER -->
-{% comment %} <section id="newsletter" class="bg-dark text-white py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <input type="text" class="form-control form-control-lg mb-resp" placeholder="Enter Name">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
         </div>
-        <div class="col-md-4">
-          <input type="email" class="form-control form-control-lg mb-resp" placeholder="Enter Email">
-        </div>
-        <div class="col-md-4">
-          <button class="btn btn-primary btn-lg btn-block">
-            <i class="fas fa-envelope-open-o"></i> Subscribe
-          </button>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
         </div>
       </div>
     </div>
-  </section> {% endcomment %}
-
-<!-- BOXES -->
-<section id="boxes" class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card text-center border-secondary mb-resp">
-                    <div class="card-body">
-                        <h3 class="text-secondary">Articles</h3>
-                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center bg-secondary text-white mb-resp">
-                    <div class="card-body">
-                        <h3>Quizes</h3>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card text-center border-secondary mb-resp">
-                    <div class="card-body">
-                        <h3 class="text-secondary">Community</h3>
-                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, deserunt.</p>
-                    </div>
-                </div>
-            </div>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
         </div>
-    </div>
-</section>
-{% comment %} 
-  <!-- ABOUT / WHY SECTION -->
-  <section id="about" class="py-5 text-center bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-          <div class="info-header mb-5">
-            <h1 class="text-primary pb-3">
-              Why This Book?
-            </h1>
-            <p class="lead pb-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus obcaecati alias rerum dolore fugiat debitis?
-            </p>
-          </div>
-
-          <!-- ACCORDION -->
-          <div id="accordion">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> Get Inspired
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse1" class="collapse show">
-                <div class="card-body">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit odit laborum qui, debitis, sequi dolores nobis mollitia
-                  labore quasi earum laboriosam nihil cupiditate magnam iusto nostrum doloremque accusantium repudiandae
-                  expedita autem et, repellendus suscipit consequatur! Alias, maiores amet sunt ab inventore illo, deleniti
-                  facilis consequatur tenetur nam pariatur fuga nisi!
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> Gain The Knowledge
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse2" class="collapse">
-                <div class="card-body">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit odit laborum qui, debitis, sequi dolores nobis mollitia
-                  labore quasi earum laboriosam nihil cupiditate magnam iusto nostrum doloremque accusantium repudiandae
-                  expedita autem et, repellendus suscipit consequatur! Alias, maiores amet sunt ab inventore illo, deleniti
-                  facilis consequatur tenetur nam pariatur fuga nisi!
-                </div>
-              </div>
-            </div>
-
-            <div class="card">
-              <div class="card-header">
-                <h5 class="mb-0">
-                  <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> Open Your Mind
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse3" class="collapse">
-                <div class="card-body">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit odit laborum qui, debitis, sequi dolores nobis mollitia
-                  labore quasi earum laboriosam nihil cupiditate magnam iusto nostrum doloremque accusantium repudiandae
-                  expedita autem et, repellendus suscipit consequatur! Alias, maiores amet sunt ab inventore illo, deleniti
-                  facilis consequatur tenetur nam pariatur fuga nisi!
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="250" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
         </div>
       </div>
     </div>
-  </section> {% endcomment %}
+  </div>
+</div>
 
-<!-- AUTHORS -->
-<section id="authors" class="my-5 text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="info-header mb-5">
-                    <h1 class="text-secondary pb-3">
-                        Meet Our Members
-                    </h1>
-                    <p class="lead">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias laborum numquam aperiam dolores a porro!
-                    </p>
-                </div>
-            </div>
-        </div>
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        From the Firehose
+      </h3>
 
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <img src= {% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-                        <h3>{{ context_data.author1 }}</h3>
-                        <h5 class="text-muted">role</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="blog-post">
+        <h2 class="blog-post-title">Sample blog post</h2>
+        <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-                        <h3>{{ context_data.author3 }}</h3>
-                        <h5 class="text-muted">role</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-                    </div>
-                </div>
-            </div>
+        <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+        <hr>
+        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+        <blockquote>
+          <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </blockquote>
+        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <h2>Heading</h2>
+        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+        <h3>Sub-heading</h3>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <pre><code>Example code block</code></pre>
+        <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+        <h3>Sub-heading</h3>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <ul>
+          <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+          <li>Donec id elit non mi porta gravida at eget metus.</li>
+          <li>Nulla vitae elit libero, a pharetra augue.</li>
+        </ul>
+        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+        <ol>
+          <li>Vestibulum id ligula porta felis euismod semper.</li>
+          <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
+          <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+        </ol>
+        <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+      </div><!-- /.blog-post -->
 
-            <div class="col-lg-3 col-md-6">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-                        <h3>{{ context_data.author4 }}</h3>
-                        <h5 class="text-muted">role</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-                    </div>
-                </div>
-            </div>
+      <div class="blog-post">
+        <h2 class="blog-post-title">Another blog post</h2>
+        <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
 
-            <div class="col-lg-3 col-md-6">
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <img src={% static 'img/default_user.png' %} alt="" class="img-fluid rounded-circle w-50 mb-3">
-                        <h3>{{ context_data.author4 }}</h3>
-                        <h5 class="text-muted">role</h5>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed commodi nostrum, ab libero voluptas officia.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+        <blockquote>
+          <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        </blockquote>
+        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+      </div><!-- /.blog-post -->
 
-<!-- CONTACT -->
-<section id="contact" class="bg-light py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <h3>Get In Touch</h3>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, temporibus!</p>
-                <form>
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-user"></i>
-                </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Name">
-                    </div>
+      <div class="blog-post">
+        <h2 class="blog-post-title">New feature</h2>
+        <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
 
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Email">
-                    </div>
+        <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <ul>
+          <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+          <li>Donec id elit non mi porta gravida at eget metus.</li>
+          <li>Nulla vitae elit libero, a pharetra augue.</li>
+        </ul>
+        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+      </div><!-- /.blog-post -->
 
-                    <div class="input-group input-group-lg mb-3">
-                        <div class="input-group-prepend">
-                <span class="input-group-text">
-                  <i class="fas fa-pencil-alt"></i>
-                </span>
-                        </div>
-                        <textarea class="form-control" placeholder="Message" rows="5"></textarea>
-                    </div>
+      <nav class="blog-pagination">
+        <a class="btn btn-outline-primary" href="#">Older</a>
+        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+      </nav>
 
-                    <input type="submit" value="Submit" class="btn btn-primary btn-block btn-lg">
-                </form>
-            </div>
+    </div><!-- /.blog-main -->
 
-            {% comment %} <div class="col-lg-3 align-self-center">
-          <img src= {% static 'img/mlogo.png' %} alt="" class="img-fluid">
-        </div> {% endcomment %}
-        </div>
-    </div>
-</section>
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 bg-light rounded">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+      </div>
 
-<!-- FOOTER -->
-<footer id="main-footer" class="py-3 bg-secondary text-white">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-6 ml-auto">
-                <p class="lead">
-                    Copyright &copy;
-                    <span id="year"></span>
-                </p>
-            </div>
-        </div>
-    </div>
+      <div class="p-4">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+          <li><a href="#">March 2014</a></li>
+          <li><a href="#">February 2014</a></li>
+          <li><a href="#">January 2014</a></li>
+          <li><a href="#">December 2013</a></li>
+          <li><a href="#">November 2013</a></li>
+          <li><a href="#">October 2013</a></li>
+          <li><a href="#">September 2013</a></li>
+          <li><a href="#">August 2013</a></li>
+          <li><a href="#">July 2013</a></li>
+          <li><a href="#">June 2013</a></li>
+          <li><a href="#">May 2013</a></li>
+          <li><a href="#">April 2013</a></li>
+        </ol>
+      </div>
+
+      <div class="p-4">
+        <h4 class="font-italic">Elsewhere</h4>
+        <ol class="list-unstyled">
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ol>
+      </div>
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<footer id="main-footer" class="py-2 bg-secondary text-white mt-4">
+  <div class="container">
+      <div class="row text-center">
+          <div class="col-md-6 ml-auto">
+              <p class="lead">
+                  Copyright &copy;
+                  <span id="year"></span>
+              </p>
+          </div>
+      </div>
+  </div>
 </footer>
-
 
 <script src= {% static 'js/jquery-3.4.1.min.js' %}></script>
 <script src= {% static 'js/popper.min.js' %}></script>
 <script src= {% static 'js/bootstrap.min.js'%}></script>
 
-<script>
-    // Get the current year for the copyright
-    $('#year').text(new Date().getFullYear());
-
-    // Init Scrollspy
-    $('body').scrollspy({ target: '#main-nav' });
-
-    // Smooth Scrolling
-    $("#main-nav a").on('click', function (event) {
-        if (this.hash !== "") {
-            event.preventDefault();
-
-            const hash = this.hash;
-
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function () {
-
-                window.location.hash = hash;
-            });
-        }
-    });
-</script>
 </body>
-
 </html>
