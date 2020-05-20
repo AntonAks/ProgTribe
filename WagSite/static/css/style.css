@@ -3,20 +3,27 @@
   font-family: "Arial";
  }
 
+body {
+  margin-top: 40px; }
 
-.blog-header-logo {
-  color: black;
-  font-size: 2.50rem;
+
+.blog-post-title-home {
+    font-size: 1.5rem;
 }
 
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+.blog-post-meta-home {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.navbar {
+  box-shadow: 2px 2px 5px #121313;
+  opacity: 0.9;
+  background: #fff; }
+  .navbar .nav-item {
+    font-size: 1.0rem;
+    padding-right: 1.0rem; }
+
 
 @media (min-width: 768px) {
     .bd-placeholder-img-lg {

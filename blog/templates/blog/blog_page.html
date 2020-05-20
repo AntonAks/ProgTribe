@@ -1,51 +1,84 @@
-<!DOCTYPE html>
-{% extends "blog/_base_blog.html" %}
+{% extends "blog/base_blog.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home Blog Page</title>
+</head>
+
 {% block content %}
 
-    <head>
-        <meta charset="UTF-8">
-        <title>{{ self.title }}</title>
-    </head>
+<body>
+    <div class="container">
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-10 blog-main">
+                    <div class="col-md-10 blog-main">
+                        <div class="blog-post">
+                            <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
+                            <p class="h6 text-muted"><em>{{ page.description }}</em></p>
 
-    <body>
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-10 blog-main">
-                <div class="blog-post">
-                    <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
-                    <p class="h6 text-muted"><em>{{ page.description }}</em></p>
+                            <p class="blog-post-meta">{{ page.first_published_at }}, <a href="#">{{ page.owner }}</a>
+                            </p>
 
-                    <p class="blog-post-meta">{{ page.first_published_at }}, <a href="#">{{ page.owner }}</a> </p>
+                            <!-- Title image -->
+                            <div class="img-fluid mb-2">
+                                {% image page.title_image width-1200 class="img-fluid" alt="Responsive image" %}
+                            </div>
 
-                    <!-- Title image -->
-                    <div class="img-fluid mb-2">
-                        {% image page.title_image width-1200 class="img-fluid" alt="Responsive image" %}
+                            <!-- Page content (StreamField) -->
+                            {% for block in page.content %}
+                            {% if block.block_type == 'heading' %}
+                            <h3>{{ block.value }}</h3>
+                            {% elif block.block_type == 'image' %}
+                            {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
+                            {% elif block.block_type == 'codeblock' %}
+                            {% include_block block.value %}
+                            {% elif block.block_type == 'content' %}
+                            <p class="h3">{{ block.value }}</p>
+                            {% elif block.block_type == 'advice_hint' %}
+                            <div class="alert alert-success" role="alert">{{ block.value }}</div>
+                            {% elif block.block_type == 'warning_hint' %}
+                            <div class="alert alert-warning" role="alert">{{ block.value }}</div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
 
-                    <!-- Page content (StreamField) -->
-                    {% for block in page.content %}
-                        {% if block.block_type == 'heading' %}
-                            <h3>{{ block.value }}</h3>
-                        {% elif block.block_type == 'image' %}
-                            {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
-                        {% elif block.block_type == 'codeblock' %}
-                            {% include_block block.value %}
-                        {% elif block.block_type == 'content' %}
-                            <p class="h3">{{ block.value }}</p>
-                        {% elif block.block_type == 'advice_hint' %}
-                            <div class="alert alert-success" role="alert">{{ block.value }}</div>
-                        {% elif block.block_type == 'warning_hint' %}
-                            <div class="alert alert-warning" role="alert">{{ block.value }}</div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </main>
-    </body>
 
+                </div><!-- /.blog-main -->
 
+                <aside class="col-md-2 blog-sidebar">
+
+                    <div class="p-2">
+                        <h4 class="font-italic">Archives</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li><a href="#">March 2014</a></li>
+                            <li><a href="#">February 2014</a></li>
+                            <li><a href="#">January 2014</a></li>
+                            <li><a href="#">December 2013</a></li>
+                            <li><a href="#">November 2013</a></li>
+                            <li><a href="#">October 2013</a></li>
+                            <li><a href="#">September 2013</a></li>
+                            <li><a href="#">August 2013</a></li>
+                            <li><a href="#">July 2013</a></li>
+                            <li><a href="#">June 2013</a></li>
+                            <li><a href="#">May 2013</a></li>
+                            <li><a href="#">April 2013</a></li>
+                        </ol>
+                    </div>
+
+                </aside><!-- /.blog-sidebar -->
+
+            </div><!-- /.row -->
+
+        </main><!-- /.container -->
+
+</body>
 {% endblock content %}
+
+</html>

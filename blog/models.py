@@ -13,12 +13,12 @@ from streams import custom_blocks
 
 class IndexBlogPage(Page):
     """ Home page for blog """
-    template = "blog/index_blog_page.html"
     template = "blog/home.html"
     max_count = 1
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
     banner_subtitle = RichTextField(features=["bold", "italic"], default='')
+    banner_about = RichTextField(features=["bold", "italic"], default='')
     banner_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -38,6 +38,7 @@ class IndexBlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
+        FieldPanel("banner_about"),
         ImageChooserPanel("banner_image"),
         PageChooserPanel("banner_cta")
     ]
@@ -69,24 +70,6 @@ class IndexBlogPage(Page):
         context["last_post"] = all_child_pages[0]
         context["last_post_2"] = all_child_pages[1]
         return context
-
-
-class SimplePage(Page):
-    template = "blog/simple_page.html"
-
-    content = StreamField(
-        [
-            ("title_ant_test", custom_blocks.TitleAndTextBlock())
-        ]
-    )
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel("content"),
-    ]
-
-    class Meta:
-        verbose_name = 'Simple Page'
-        verbose_name_plural = 'Simple Pages'
 
 
 class BlogPage(Page):

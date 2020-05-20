@@ -14,7 +14,7 @@ urlpatterns = [
                   re_path(r'^cms/', include(wagtailadmin_urls), name='cms'),
                   re_path(r'^documents/', include(wagtaildocs_urls)),
                   re_path(r'^blog/', include(wagtail_urls)),
-                  re_path(r'^', include(wagtail_urls)),
+                  re_path(r'^', include(wagtail_urls), name='home'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
