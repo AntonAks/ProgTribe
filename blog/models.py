@@ -66,7 +66,18 @@ class IndexBlogPage(Page):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
 
+
+        archive_posts = []
+        for _page in all_child_pages:
+            archive_posts.append(_page.first_published_at.strftime("%b %Y"))
+
+        archive_posts = set(archive_posts)
+        archive_posts = list(archive_posts)
+        print(archive_posts)
+
         context["sub_pages"] = posts
+        context["archive_posts"] = archive_posts
+        
         context["last_post"] = all_child_pages[0]
         context["last_post_2"] = all_child_pages[1]
         return context
@@ -105,3 +116,19 @@ class BlogPage(Page):
 
     def get_title_image(self):
         return self.title_image
+
+    
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        all_child_pages = self.get_parent().get_children().specific().order_by('-first_published_at')
+
+
+        archive_posts = []
+        for _page in all_child_pages:
+            archive_posts.append(_page.first_published_at.strftime("%b %Y"))
+        archive_posts = set(archive_posts)
+        archive_posts = list(archive_posts)
+
+        context["archive_posts"] = archive_posts
+        
+        return context

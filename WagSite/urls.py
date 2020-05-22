@@ -7,9 +7,12 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from blog.views import archive_page_view
+
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('archive/<str:month_year_key>', archive_page_view, name='archive_page'),
 
                   re_path(r'^cms/', include(wagtailadmin_urls), name='cms'),
                   re_path(r'^documents/', include(wagtaildocs_urls)),

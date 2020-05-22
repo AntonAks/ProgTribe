@@ -1,0 +1,70 @@
+{% extends "blog/base_blog.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Archive Page</title>
+</head>
+
+
+{% block content %}
+
+<body>
+  <div class="container">
+
+    <div class="container">
+
+
+
+      <main role="main" class="container">
+        <div class="row">
+          <div class="col-md-8 blog-main">
+            <h3 class="pb-4 mb-4 font-italic border-bottom">
+              Archive posts ({{ month_year_key }})
+            </h3>
+            
+            {% with live_pages as pages %}
+            {% for page in pages %}
+            <div class="blog-post">
+              <a href="{{ page.url_path }}">
+                
+                  <h2 class="blog-post-title-home">{{ page.title }}</h2>
+                
+              </a>
+              <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
+              <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
+              <hr>
+
+            </div><!-- /.blog-post -->
+            {% endfor %}
+            {% endwith %}
+
+
+          </div><!-- /.blog-main -->
+            <div class="p-4">
+              <h4 class="font-italic">Archives</h4>
+              <ol class="list-unstyled mb-0">
+
+                {% for archive_page in archive_posts %} 
+                <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+                {% endfor %}
+
+
+              </ol>
+            </div>
+
+          </aside><!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+
+      </main><!-- /.container -->
+
+
+</body>
+{% endblock content %}
+
+</html>
