@@ -9,6 +9,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
 
 from streams import custom_blocks
+from random import choice
 
 
 class IndexBlogPage(Page):
@@ -55,7 +56,7 @@ class IndexBlogPage(Page):
         context = super().get_context(request, *args, **kwargs)
         all_child_pages = self.get_children().specific().order_by('-first_published_at')
 
-        paginator = Paginator(all_child_pages, 3)
+        paginator = Paginator(all_child_pages, 6)
 
         page = request.GET.get("page")
 
@@ -73,13 +74,12 @@ class IndexBlogPage(Page):
 
         archive_posts = set(archive_posts)
         archive_posts = list(archive_posts)
-        print(archive_posts)
 
         context["sub_pages"] = posts
         context["archive_posts"] = archive_posts
         
-        context["last_post"] = all_child_pages[0]
-        context["last_post_2"] = all_child_pages[1]
+        context["random_post"] = choice(all_child_pages)
+
         return context
 
 

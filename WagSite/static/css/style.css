@@ -1,14 +1,51 @@
-* {
+/* * {
   font-size: 1rem;
   font-family: "Arial";
- }
+ } */
 
 body {
   margin-top: 40px; }
 
+.jumbotron-image {
+    background: url("../img/data_analytics_header_interior_desktop.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+
+.rich-text {
+  font-family: sans-serif;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color:#195e83;
+    border-color: #195e83;
+  }
+
+  .page-link:hover {
+    z-index: 2;
+    color: #195e83;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+  }
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #195e83;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
 
 .blog-post-title-home {
     font-size: 1.5rem;
+    color: #195e83;
 }
 
 .blog-post-meta-home {
