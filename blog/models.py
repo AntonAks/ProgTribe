@@ -11,9 +11,12 @@ from wagtailcodeblock.blocks import CodeBlock
 from streams import custom_blocks
 from random import choice
 
+from local_settings import WEB_CUSTOM_META
+
 
 class IndexBlogPage(Page):
     """ Home page for blog """
+
     template = "blog/home.html"
     max_count = 1
 
@@ -54,6 +57,7 @@ class IndexBlogPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
+
         all_child_pages = self.get_children().specific().order_by('-first_published_at')
 
         paginator = Paginator(all_child_pages, 6)
@@ -77,8 +81,8 @@ class IndexBlogPage(Page):
 
         context["sub_pages"] = posts
         context["archive_posts"] = archive_posts
-        
         context["random_post"] = choice(all_child_pages)
+        context["web_meta"] = WEB_CUSTOM_META
 
         return context
 
@@ -130,5 +134,7 @@ class BlogPage(Page):
         archive_posts = list(archive_posts)
 
         context["archive_posts"] = archive_posts
+        context["random_post"] = choice(all_child_pages)
+
         
         return context

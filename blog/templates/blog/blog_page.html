@@ -7,67 +7,82 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home Blog Page</title>
+
+    {% block title %}
+    <title>{{ page.title }}</title>
+    {% endblock title %}
+
 </head>
 
 {% block content %}
 
 <body>
-    <div class="container">
-        <main role="main" class="container">
-            <div class="row">
-                <div class="col-md-10 blog-main">
-                    <div class="col-md-10 blog-main">
-                        <div class="blog-post">
-                            <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
-                            <p class="h6 text-muted"><em>{{ page.description }}</em></p>
 
-                            <p class="blog-post-meta">{{ page.first_published_at }}, <a href="#">{{ page.owner }}</a>
-                            </p>
+    <main role="main" class="container">
 
-                            <!-- Title image -->
-                            <div class="img-fluid mb-2">
-                                {% image page.title_image width-1200 class="img-fluid" alt="Responsive image" %}
-                            </div>
+        <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
+        <p class="blog-post-meta">{{ page.first_published_at }}, <a href="#">{{ page.owner }}</a>
+        </p>
 
-                            <!-- Page content (StreamField) -->
-                            {% for block in page.content %}
-                            {% if block.block_type == 'heading' %}
-                            <h3>{{ block.value }}</h3>
-                            {% elif block.block_type == 'image' %}
-                            {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
-                            {% elif block.block_type == 'codeblock' %}
-                            {% include_block block.value %}
-                            {% elif block.block_type == 'content' %}
-                            <p class="h3">{{ block.value }}</p>
-                            {% elif block.block_type == 'advice_hint' %}
-                            <div class="alert alert-success" role="alert">{{ block.value }}</div>
-                            {% elif block.block_type == 'warning_hint' %}
-                            <div class="alert alert-warning" role="alert">{{ block.value }}</div>
-                            {% endif %}
-                            {% endfor %}
+        <div class="img-fluid mb-2">
+            {% image page.title_image width-1200 class="img-fluid" alt="Responsive image" %}
+        </div>
+        <div class="row">
+            <div class="col-md-8 blog-main">
+
+                <div class="blog-post">
+                    <!-- <h1 class="blog-post-title mt-2">{{ page.title }}</h1> -->
+                    <p class="h6 text-muted"><em>{{ page.description }}</em></p>
+                    <!-- Page content (StreamField) -->
+                    {% for block in page.content %}
+                    {% if block.block_type == 'heading' %}
+                    <h3>{{ block.value }}</h3>
+                    {% elif block.block_type == 'image' %}
+                    {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
+                    {% elif block.block_type == 'codeblock' %}
+                    {% include_block block.value %}
+                    {% elif block.block_type == 'content' %}
+                    <p class="h3">{{ block.value }}</p>
+                    {% elif block.block_type == 'advice_hint' %}
+                    <div class="alert alert-success" role="alert">{{ block.value }}</div>
+                    {% elif block.block_type == 'warning_hint' %}
+                    <div class="alert alert-warning" role="alert">{{ block.value }}</div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+
+
+            </div><!-- /.blog-main -->
+
+            <aside class="col-md-4 blog-sidebar">
+
+                <div class="card bg-light mb-3">
+                    <div class="card-header">Random post</div>
+                    <div class="col p-1 d-flex flex-column position-static">
+                        {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
+                        <div class="card-body">
+                            <h6 class="mb-0">{{ random_post.title }}</h6>
+                            <div class="mb-1 text-muted">{{ random_post.first_published_at }}</div>
+                            <a href="{{ random_post.url_path }}" class="stretched-link"></a>
                         </div>
                     </div>
+                </div>
 
+                <div class="p-4 mb-3 card bg-light mb-3">
+                    <h4 class="font-italic">Archives</h4>
+                    <ol class="list-unstyled mb-0">
+                        {% for archive_page in archive_posts %}
+                        <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
 
-                </div><!-- /.blog-main -->
+            </aside><!-- /.blog-sidebar -->
 
-                <aside class="col-md-2 blog-sidebar">
+        </div><!-- /.row -->
 
-                    <div class="p-2">
-                        <h4 class="font-italic">Archives</h4>
-                        <ol class="list-unstyled mb-0">
-                            {% for archive_page in archive_posts %} 
-                            <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
-                            {% endfor %}
-                        </ol>
-                    </div>
-
-                </aside><!-- /.blog-sidebar -->
-
-            </div><!-- /.row -->
-
-        </main><!-- /.container -->
+    </main><!-- /.container -->
 
 </body>
 {% endblock content %}
