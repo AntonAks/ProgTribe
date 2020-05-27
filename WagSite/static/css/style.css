@@ -12,10 +12,51 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
   }
-  
+
+#blog-title-image{
+    width: 1200;
+    overflow: hidden;
+    margin: 0;
+ }
+#blog-title-image img{
+    display:block;
+    width:100%;
+ }
+
+ #blog-title-image img{
+  margin: -10% 0;
+}
+
+#blog-post-image{
+  width: 1200;
+  overflow: hidden;
+  margin: 0;
+}
+#blog-post-image img{
+  display:block;
+  width:100%;
+}
+
+#blog-post-image img{
+margin: 0% 0;
+}
+
+
+
 
 .rich-text {
   font-family: sans-serif;
+}
+
+a {
+  color: #195e83;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #195e83;
+  text-decoration: underline;
 }
 
 .page-item.active .page-link {
@@ -52,6 +93,18 @@ body {
   font-size: 0.8rem;
   color: grey;
 }
+
+.blog-post-title {
+  font-size: 3rem;
+  color: #195e83;
+}
+
+.blog-post-meta {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+
 
 .navbar {
   box-shadow: 2px 2px 5px #121313;
