@@ -1,5 +1,8 @@
 # WagSite Project
 
+## Home Page 
+![alt text](https://github.com/AntonAks/WagSite/blob/dev/wagsite_image.png?raw=true)
+
 ## About 
 This is a template application for basic website, built with Django and Wagtail. 
 
