@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'home',
     'search',
 
+    'blog',
+    'wagtailcodeblock',
+
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -59,8 +62,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
+    'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+WAGTAIL_CODE_BLOCK_THEME = 'coy'
+WAGTAIL_CODE_BLOCK_LANGUAGES = (
+    ('bash', 'Bash/Shell'),
+    ('css', 'CSS'),
+    ('diff', 'diff'),
+    ('html', 'HTML'),
+    ('javascript', 'Javascript'),
+    ('json', 'JSON'),
+    ('python', 'Python'),
+    ('scss', 'SCSS'),
+    ('yaml', 'YAML'),
+    ('r', 'R'),
+)
 
 ROOT_URLCONF = 'WagSite.urls'
 
