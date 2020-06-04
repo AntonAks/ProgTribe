@@ -1,4 +1,4 @@
-{% extends "blog/base_blog.html" %}
+{% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
@@ -12,16 +12,11 @@
   {% endblock title %}
 </head>
 
-
 {% block content %}
 
 <body>
   <div class="container">
-
     <div class="container">
-
-
-
       <main role="main" class="container">
         <div class="row">
           <div class="col-md-8 blog-main">
@@ -32,7 +27,7 @@
             {% with live_pages as pages %}
             {% for page in pages %}
             <div class="blog-post">
-              <a href="{{ page.url_path }}">
+              <a href="{{ page.url }}">
 
                 <h2 class="blog-post-title-home">{{ page.title }}</h2>
 
@@ -56,7 +51,7 @@
                 <div class="card-body">
                   <h6 class="mb-0">{{ random_post.title }}</h6>
                   <div class="mb-1 text-muted">{{ random_post.first_published_at }}</div>
-                  <a href="{{ random_post.url_path }}" class="stretched-link"></a>
+                  <a href="{{ random_post.url }}" class="stretched-link"></a>
                 </div>
               </div>
             </div>
@@ -69,14 +64,11 @@
                 {% endfor %}
               </ol>
             </div>
-
           </aside><!-- /.blog-sidebar -->
-
         </div><!-- /.row -->
-
       </main><!-- /.container -->
-
-
+    </div>
+  </div>
 </body>
 {% endblock content %}
 

@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    {% block title %}
+    <title>{{ page.title }}</title>
+    {% endblock title %}
+
+</head>
+
+{% block content %}
+{% image self.title_image width-1200 as img %}
+<body>
+
+<main role="main" class="container">
+
+    <div class="jumbotron text-white jumbotron-image shadow"
+         style="background-image: url('{{img.url}}');
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;
+         min-height: 350px;">
+        <h2 class="mb-4">
+            {{self.banner_title}}
+        </h2>
+    </div>
+    <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
+    <p class="blog-post-meta">{{ page.first_published_at }}</a>
+    </p>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-8 blog-main">
+
+            <div class="blog-post">
+                <p class="h6 text-muted"><em>{{ page.description }}</em></p>
+                <!-- Page content (StreamField) -->
+                {% for block in page.content %}
+                {% if block.block_type == 'heading' %}
+                <h3>{{ block.value }}</h3>
+                {% elif block.block_type == 'image' %}
+                <div id="blog-post-image" class="img-fluid mb-2">
+                    {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
+                </div>
+                {% elif block.block_type == 'codeblock' %}
+                {% include_block block.value %}
+                {% elif block.block_type == 'content' %}
+                <p class="h3">{{ block.value }}</p>
+                {% elif block.block_type == 'advice_hint' %}
+                <div class="alert alert-success" role="alert">{{ block.value }}</div>
+                {% elif block.block_type == 'warning_hint' %}
+                <div class="alert alert-warning" role="alert">{{ block.value }}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+
+            <div class="card bg-light mb-3">
+                <div class="card-header">Random post</div>
+                <div class="col p-1 d-flex flex-column position-static">
+                    {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
+                    <div class="card-body">
+                        <h6 class="mb-0">{{ random_post.title }}</h6>
+                        <div class="mb-1 text-muted">{{ random_post.first_published_at }}</div>
+                        <a href="{{ random_post.url }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 mb-3 card bg-light mb-3">
+                <h4 class="font-italic">Archives</h4>
+                <ol class="list-unstyled mb-0">
+                    {% for archive_page in archive_posts %}
+                    <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+</body>
+{% endblock content %}
+
+</html>
