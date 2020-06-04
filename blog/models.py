@@ -11,6 +11,7 @@ from random import choice
 
 
 class BlogPage(Page):
+    template = "blog/blog_page.html"
     title_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -54,6 +55,7 @@ class BlogPage(Page):
         archive_posts = list(archive_posts)
 
         context["archive_posts"] = archive_posts
-        # context["random_post"] = choice(all_child_pages)
+        if all_child_pages:
+            context["random_post"] = choice(all_child_pages)
 
         return context

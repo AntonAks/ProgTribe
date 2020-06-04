@@ -74,6 +74,8 @@ class HomePage(Page):
 
         context["sub_pages"] = posts
         context["archive_posts"] = archive_posts
-        # context["random_post"] = choice(all_child_pages)
+
+        if all_child_pages:
+            context["random_post"] = choice(all_child_pages)
 
         return context

@@ -1,12 +1,14 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.urls import path, re_path
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
+from blog import views as blog_views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
@@ -15,6 +17,10 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    re_path(r'blog/', include(wagtail_urls)),
+    path(r'archive/<str:month_year_key>', blog_views.archive_page_view, name='archive_page')
+    # path('archive/<str:month_year_key>', archive_page_view, name='archive_page'),
 
 ]
 

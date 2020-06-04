@@ -15,16 +15,21 @@
 
 
 {% block content %}
+{% image self.banner_image width-1200 as img %}
 
 <body>
   <main role="main" class="container">
-
-    <div class="jumbotron text-white jumbotron-image shadow">
+    <div class="jumbotron text-white jumbotron-image shadow"
+         style="background-image: url('{{img.url}}');
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;">
       <h2 class="mb-4">
-        {{web_meta.web_site_name}}
+        {{self.banner_title}}
       </h2>
     </div>
 
+<!--    {% image self.banner_image width-1200 class="img-fluid" alt="Responsive image" %}-->
 
     <div class="row">
       <div class="col-md-8 blog-main">
@@ -63,7 +68,7 @@
         {% with sub_pages as pages %}
         {% for page in pages %}
         <div class="blog-post">
-          <a href="{{ page.url_path }}">
+          <a href="{{ page.slug }}">
 
             <h2 class="blog-post-title-home">{{ page.title }}</h2>
 
@@ -120,7 +125,7 @@
             <div class="card-body">
               <h6 class="mb-0">{{ random_post.title }}</h6>
               <div class="mb-1 text-muted">{{ random_post.first_published_at }}</div>
-              <a href="{{ random_post.url_path }}" class="stretched-link"></a>
+              <a href="{{ random_post.url }}" class="stretched-link"></a>
             </div>
           </div>
         </div>
