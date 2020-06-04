@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="59876a1a-1b7d-4edc-8bd1-b0712074703b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/settings/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/settings/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/settings/dev.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/settings/production.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/static/css/WagSite.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/static/js/WagSite.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/templates/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/templates/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WagSite/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/static/css/welcome_page.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/home/home_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home/templates/home/welcome_page.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/templates/search/search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wagsite_image.png" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1cs556hq0xjmM8F9ovFDun5FpvM" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="59876a1a-1b7d-4edc-8bd1-b0712074703b" name="Default Changelist" comment="" />
+      <created>1591304273752</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591304273752</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="599" y="287" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591304558452">
+      <screen x="52" y="27" width="1628" height="1023" />
+    </state>
+    <state x="599" y="287" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/52.27.1628.1023@52.27.1628.1023" timestamp="1591304558452" />
+    <state x="355" y="173" width="1022" height="737" key="SettingsEditor" timestamp="1591304416423">
+      <screen x="52" y="27" width="1628" height="1023" />
+    </state>
+    <state x="355" y="173" width="1022" height="737" key="SettingsEditor/52.27.1628.1023@52.27.1628.1023" timestamp="1591304416423" />
+    <state x="591" y="232" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog" timestamp="1591304746644">
+      <screen x="52" y="27" width="1628" height="1023" />
+    </state>
+    <state x="591" y="232" width="539" height="619" key="git4idea.branch.GitSmartOperationDialog/52.27.1628.1023@52.27.1628.1023" timestamp="1591304746644" />
+  </component>
+</project>
