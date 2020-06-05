@@ -10,19 +10,21 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 from blog import views as blog_views
 
+from django.conf.urls.i18n import i18n_patterns
+
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
-    re_path(r'blog/', include(wagtail_urls)),
-    path(r'archive/<str:month_year_key>', blog_views.archive_page_view, name='archive_page')
+
 ]
 
-from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns += i18n_patterns(
     url(r'', include(wagtail_urls)),
+    re_path(r'blog/', include(wagtail_urls)),
+    path(r'archive/<str:month_year_key>', blog_views.archive_page_view, name='archive_page'),
 )
 
 
