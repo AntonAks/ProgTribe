@@ -20,7 +20,7 @@ class BlogPage(Page):
         related_name='+'
     )
 
-    text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=300)
+    text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=600)
 
     content = StreamField(
         [
