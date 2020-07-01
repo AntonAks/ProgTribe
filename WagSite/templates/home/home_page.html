@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  {% block title %}
+  <title>WagSite</title>
+  {% endblock title %}
+</head>
+
+
+{% block content %}
+{% image self.banner_image width-1200 as img %}
+
+<body>
+<header class="blog-header py-3">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow-sm">
+        <a class="navbar-brand" href="/">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+<!--                <li class="nav-item active">-->
+<!--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+<!--                </li>-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="#">Link</a>-->
+<!--                </li>-->
+
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+<!--                </li>-->
+            </ul>
+            <div class="nav-item dropdown">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{request.LANGUAGE_CODE}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% load wagtail_modeltranslation %}
+                    {% get_available_languages_wmt as languages %}
+                    {% for language in languages %}
+                    <a class="dropdown-item" href="/{{ language }}">
+                        <span>{{ language }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="container">
+  <div class="jumbotron text-white jumbotron-image shadow"
+       style="background-image: url('{{img.url}}');
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;">
+    <h2 class="mb-4">
+      {{self.banner_title}}
+    </h2>
+  </div>
+
+  <!--    {% image self.banner_image width-1200 class="img-fluid" alt="Responsive image" %}-->
+
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">
+        Blog content
+      </h3>
+
+      {% if sub_pages.paginator.num_pages %}
+      <div class="pagination mb-4">
+        {% if sub_pages.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
+            <span>&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
+
+        {% for page_num in sub_pages.paginator.page_range %}
+        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+        {% endfor %}
+
+        {% if sub_pages.has_next %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
+            <span>&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% with sub_pages as pages %}
+      {% for page in pages %}
+      <div class="blog-post">
+        <a href="{{ page.slug }}">
+
+          <h2 class="blog-post-title-home">{{ page.title }}</h2>
+
+        </a>
+        <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
+        <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
+        <hr>
+
+      </div><!-- /.blog-post -->
+      {% endfor %}
+      {% endwith %}
+
+      {% if sub_pages.paginator.num_pages %}
+      <div class="pagination mb-4">
+        {% if sub_pages.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
+            <span>&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
+
+        {% for page_num in sub_pages.paginator.page_range %}
+        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+        {% endfor %}
+
+        {% if sub_pages.has_next %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
+            <span>&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+    </div><!-- /.blog-main -->
+
+    <aside class="col-md-4 blog-sidebar">
+      <div class="p-4 mb-3 card bg-light mb-3">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0"><em> {{ self.banner_about|richtext }} </em></p>
+      </div>
+
+      <div class="card bg-light mb-3">
+        <div class="card-header">Random post</div>
+        <div class="col p-1 d-flex flex-column position-static">
+          {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
+          <div class="card-body">
+            <h6 class="mb-0">{{ random_post.title }}</h6>
+            <div class="mb-1 text-muted">{{ random_post.first_published_at }}</div>
+            <a href="{{ random_post.url }}" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="p-4 mb-3 card bg-light mb-3">
+        <h4 class="font-italic">Archives</h4>
+        <ol class="list-unstyled mb-0">
+          {% for archive_page in archive_posts %}
+          <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+          {% endfor %}
+        </ol>
+      </div>
+
+    </aside><!-- /.blog-sidebar -->
+
+  </div><!-- /.row -->
+  </div><!-- /.main -->
+</main>
+</body>
+{% endblock content %}
+
+</html>
