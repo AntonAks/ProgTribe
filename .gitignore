@@ -23,6 +23,7 @@ backend/reload_engine/EDX_COM
 local_settings.py
 media/
 /staticfiles
+migrations/
 
 ### Database ###
 *.accdb
