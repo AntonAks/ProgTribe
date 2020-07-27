@@ -1,11 +1,12 @@
-from .models import HomePage
+from .models import BlogPage
 from blog.models import BlogPage
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register
 
 
-@register(HomePage)
+
+@register(BlogPage)
 class TransHomePageTR(TranslationOptions):
     fields = (
-        'banner_about',
+        'text_intro', 'content',
     )
