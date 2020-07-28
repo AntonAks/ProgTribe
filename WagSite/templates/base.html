@@ -2,7 +2,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
@@ -17,23 +17,23 @@
 
 
 
-
-
 <body id="home" data-spy="scroll" data-target="">
 
-<div class="container">
-    {% block content %}
+    <div class="container">
+        {% block content %}
 
-    {% endblock content %}
-</div>
+        {% endblock content %}
+    </div>
 
-<footer>
-    {% block javascript %}
-    <script src={% static 'js/jquery-3.4.1.min.js' %}></script>
+    <footer>
+        {% block javascript %}
+        <script src={% static 'js/jquery-3.4.1.min.js' %}></script>
         <script src={% static 'js/popper.min.js' %}></script>
-    <script src={% static 'js/bootstrap.min.js'%}></script>
+        <script src={% static 'js/bootstrap.min.js' %}></script>
+        <script src={% static 'js/WagSite.js' %}></script>
         {% endblock javascript %}
-        </footer>
+    </footer>
 
-    </body>
+</body>
+
 </html>
