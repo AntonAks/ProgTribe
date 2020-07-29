@@ -10,7 +10,7 @@
 
   {% block title %}
   <!-- <title id="home-title-name">WagSite</title> -->
-  <title>{% self.title %}</title>
+  <title id="home-title-name"></title>
   {% endblock title %}
 </head>
 
@@ -20,42 +20,42 @@
 
 <body>
 <header class="blog-header py-3">
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow-sm">
-        <a class="navbar-brand" id="nav-bar-name" href="/">Navbar</a>
-        
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow-sm">
+    <a class="navbar-brand" id="nav-bar-name" href="/">Navbar</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!--                <li class="nav-item active">-->
+        <!--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
+        <!--                </li>-->
+        <!--                <li class="nav-item">-->
+        <!--                    <a class="nav-link" href="#">Link</a>-->
+        <!--                </li>-->
+
+        <!--                <li class="nav-item">-->
+        <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
+        <!--                </li>-->
+      </ul>
+      <div class="nav-item dropdown">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{request.LANGUAGE_CODE}}
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-<!--                <li class="nav-item active">-->
-<!--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="#">Link</a>-->
-<!--                </li>-->
-
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-<!--                </li>-->
-            </ul>
-            <div class="nav-item dropdown">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{request.LANGUAGE_CODE}}
-                </button>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    {% load wagtail_modeltranslation %}
-                    {% get_available_languages_wmt as languages %}
-                    {% for language in languages %}
-                    <a class="dropdown-item" href="/{{ language }}">
-                        <span>{{ language }}</span>
-                    </a>
-                    {% endfor %}
-                </div>
-            </div>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          {% load wagtail_modeltranslation %}
+          {% get_available_languages_wmt as languages %}
+          {% for language in languages %}
+          <a class="dropdown-item" href="/{{ language }}">
+            <span>{{ language }}</span>
+          </a>
+          {% endfor %}
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <main role="main" class="container">
@@ -183,7 +183,6 @@
     </aside><!-- /.blog-sidebar -->
 
   </div><!-- /.row -->
-  </div><!-- /.main -->
 </main>
 </body>
 {% endblock content %}
