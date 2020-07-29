@@ -9,6 +9,11 @@ from wagtailcodeblock.blocks import CodeBlock
 
 from random import choice
 
+try:
+    from local_site_settings import local_site_settings
+except ImportError:
+    from _local_site_settings import local_site_settings
+
 
 class BlogPage(Page):
     template = "blog/blog_page.html"
@@ -55,6 +60,7 @@ class BlogPage(Page):
         archive_posts = list(archive_posts)
 
         context["archive_posts"] = archive_posts
+        context["local_site_settings"] = local_site_settings
         if all_child_pages:
             context["random_post"] = choice(all_child_pages)
 

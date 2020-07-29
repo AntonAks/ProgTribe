@@ -7,6 +7,7 @@
 *.pyc
 __pycache__/
 local_settings.py
+local_site_settings.py
 db.sqlite3
 venv/
 /static/
