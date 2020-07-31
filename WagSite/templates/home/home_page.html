@@ -19,67 +19,27 @@
 {% image self.banner_image width-1200 as img %}
 
 <body>
-<header class="blog-header py-3">
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light shadow-sm">
-    <a class="navbar-brand" href="/">{{ local_site_settings.navbar_title }} </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <!--                <li class="nav-item active">-->
-        <!--                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-        <!--                </li>-->
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link" href="#">Link</a>-->
-        <!--                </li>-->
-
-        <!--                <li class="nav-item">-->
-        <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
-        <!--                </li>-->
-      </ul>
-      <div class="nav-item dropdown">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{request.LANGUAGE_CODE}}
-        </button>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          {% load wagtail_modeltranslation %}
-          {% get_available_languages_wmt as languages %}
-          {% for language in languages %}
-          <a class="dropdown-item" href="/{{ language }}">
-            <span>{{ language }}</span>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
 
 <main role="main" class="container">
-  <div class="jumbotron text-white jumbotron-image shadow"
+  <div class="jumbotron jumbotron-image shadow"
        style="background-image: url('{{img.url}}');
          background-size: cover;
          background-position: center center;
-         background-repeat: no-repeat;">
-    <h2 class="mb-4">
-      {{self.banner_title}}
+         background-repeat: no-repeat;
+         min-height: 300px;">
+    <h2 class="display-4">
+      {{page.banner_title}}
     </h2>
-    <h4>
-      {{ self.banner_subtitle }}
-    </h4>
+    <p>
+      {{ self.banner_subtitle|richtext }}
+    </p>
   </div>
-
   <!--    {% image self.banner_image width-1200 class="img-fluid" alt="Responsive image" %}-->
 
   <div class="row">
     <div class="col-md-8 blog-main">
-      <h3 class="pb-4 mb-4 font-italic border-bottom">
-        Blog content
-      </h3>
-
+      <hr>
       {% if sub_pages.paginator.num_pages %}
       <div class="pagination mb-4">
         {% if sub_pages.has_previous %}
@@ -156,12 +116,12 @@
     </div><!-- /.blog-main -->
 
     <aside class="col-md-4 blog-sidebar">
-      <div class="p-4 mb-3 card bg-light mb-3">
+      <div class="p-4 mb-3 card mb-3">
         <h4 class="font-italic">About</h4>
         <p class="mb-0"><em> {{ self.banner_about|richtext }} </em></p>
       </div>
 
-      <div class="card bg-light mb-3">
+      <div class="card border-primary mb-3">
         <div class="card-header">Random post</div>
         <div class="col p-1 d-flex flex-column position-static">
           {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
@@ -173,8 +133,7 @@
         </div>
       </div>
 
-
-      <div class="p-4 mb-3 card bg-light mb-3">
+      <div class="p-4 mb-3 card mb-3">
         <h4 class="font-italic">Archives</h4>
         <ol class="list-unstyled mb-0">
           {% for archive_page in archive_posts %}
