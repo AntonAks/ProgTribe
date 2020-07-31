@@ -7,6 +7,11 @@ from wagtail.core.fields import RichTextField
 
 from random import choice
 
+try:
+    from local_site_settings import local_site_settings
+except ImportError:
+    from _local_site_settings import local_site_settings
+
 
 class HomePage(Page):
     """ Home page for blog """
@@ -74,6 +79,7 @@ class HomePage(Page):
 
         context["sub_pages"] = posts
         context["archive_posts"] = archive_posts
+        context["local_site_settings"] = local_site_settings
 
         if all_child_pages:
             context["random_post"] = choice(all_child_pages)

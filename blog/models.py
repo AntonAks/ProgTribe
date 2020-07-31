@@ -1,6 +1,6 @@
 from django.db import models
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, CharField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
@@ -9,9 +9,17 @@ from wagtailcodeblock.blocks import CodeBlock
 
 from random import choice
 
+try:
+    from local_site_settings import local_site_settings
+except ImportError:
+    from _local_site_settings import local_site_settings
+
 
 class BlogPage(Page):
     template = "blog/blog_page.html"
+
+    PAGE_CATEGORIES = [('Common Page', 'Common Page'), ('Common Page', 'Single Page')]
+
     title_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -21,6 +29,7 @@ class BlogPage(Page):
     )
 
     text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=600)
+    page_category = CharField(max_length=100, choices=PAGE_CATEGORIES, default='Common Page')
 
     content = StreamField(
         [
@@ -36,6 +45,7 @@ class BlogPage(Page):
     )
 
     content_panels = Page.content_panels + [
+        FieldPanel('page_category'),
         ImageChooserPanel('title_image'),
         FieldPanel('text_intro'),
         StreamFieldPanel('content'),
@@ -55,6 +65,7 @@ class BlogPage(Page):
         archive_posts = list(archive_posts)
 
         context["archive_posts"] = archive_posts
+        context["local_site_settings"] = local_site_settings
         if all_child_pages:
             context["random_post"] = choice(all_child_pages)
 

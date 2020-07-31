@@ -3,6 +3,11 @@ from .models import BlogPage
 
 from random import choice
 
+try:
+    from local_site_settings import local_site_settings
+except ImportError:
+    from _local_site_settings import local_site_settings
+
 
 def archive_page_view(request, month_year_key):
 
@@ -10,6 +15,7 @@ def archive_page_view(request, month_year_key):
     archive_filtered_list = []
     for page in live_pages:
         if page.first_published_at.strftime("%b %Y") == month_year_key:
+            print(page.first_published_at.strftime("%b %Y"))
             archive_filtered_list.append(page)
 
     archive_posts = []
@@ -21,6 +27,7 @@ def archive_page_view(request, month_year_key):
     archive_filtered_list.sort(key=lambda x: x.first_published_at, reverse=True)
 
     page_content = {'live_pages': archive_filtered_list,
+                    "local_site_settings": local_site_settings,
                     'archive_posts': archive_posts,
                     'month_year_key': month_year_key,
                     "random_post": choice(live_pages)}
