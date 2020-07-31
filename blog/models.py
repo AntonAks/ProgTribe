@@ -1,6 +1,6 @@
 from django.db import models
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel, CharField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
@@ -17,6 +17,9 @@ except ImportError:
 
 class BlogPage(Page):
     template = "blog/blog_page.html"
+
+    PAGE_CATEGORIES = [('Common Page', 'Common Page'), ('Common Page', 'Single Page')]
+
     title_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -26,6 +29,7 @@ class BlogPage(Page):
     )
 
     text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=600)
+    page_category = CharField(max_length=100, choices=PAGE_CATEGORIES, default='Common Page')
 
     content = StreamField(
         [
@@ -41,6 +45,7 @@ class BlogPage(Page):
     )
 
     content_panels = Page.content_panels + [
+        FieldPanel('page_category'),
         ImageChooserPanel('title_image'),
         FieldPanel('text_intro'),
         StreamFieldPanel('content'),
