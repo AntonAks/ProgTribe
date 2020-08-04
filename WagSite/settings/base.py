@@ -180,3 +180,47 @@ WAGTAIL_SITE_NAME = "WagSite"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# Log settings
+MAIN_LOG_FILE = os.path.join(BASE_DIR, 'logs/logfile.log')
+
+if not os.path.exists(MAIN_LOG_FILE):
+    os.makedirs(os.path.dirname(MAIN_LOG_FILE))
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '[%(asctime)s] -%(levelname)s- : %(message)s',
+            'datefmt': '%Y%m%d-%H:%M:%S',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'level': 'INFO',
+            'formatter': 'simple'
+        },
+
+        'file_users_actions': {
+
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'INFO',
+            'filename': MAIN_LOG_FILE,
+            'maxBytes': 1024*1024*20,   # 20 Mb
+            'formatter': 'simple',
+        }
+    },
+
+    'loggers': {
+        '': {
+            'level': 'INFO',
+            'handlers': ['file_users_actions'],
+        },
+        'errors': {
+            'level': 'ERROR',
+            'handlers': ['file_users_actions'],
+        },
+    }
+}
