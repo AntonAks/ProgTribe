@@ -72,7 +72,8 @@ class HomePage(Page):
 
         archive_posts = []
         for _page in all_child_pages:
-            archive_posts.append(_page.first_published_at.strftime("%b %Y"))
+            if _page.first_published_at:
+                archive_posts.append(_page.first_published_at.strftime("%b %Y"))
 
         archive_posts = set(archive_posts)
         archive_posts = list(archive_posts)

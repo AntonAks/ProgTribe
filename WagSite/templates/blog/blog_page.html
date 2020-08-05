@@ -48,7 +48,7 @@
                 {% elif block.block_type == 'codeblock' %}
                 {% include_block block.value %}
                 {% elif block.block_type == 'content' %}
-                <p class="h3">{{ block.value }}</p>
+                <p>{{ block.value }}</p>
                 {% elif block.block_type == 'advice_hint' %}
                 <div class="alert alert-success" role="alert">{{ block.value }}</div>
                 {% elif block.block_type == 'warning_hint' %}
