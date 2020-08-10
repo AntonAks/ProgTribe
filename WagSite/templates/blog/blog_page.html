@@ -54,7 +54,9 @@
                 <div class="alert alert-warning" role="alert">{{ block.value }}</div>
                 {% elif block.block_type == 'terminal_block' %}
                 <div class="card text-white bg-dark" role="alert">
+                    <div class="card-body">
                     {{ block.value }}
+                    </div>
                 </div>
                 {% endif %}
                 {% endfor %}
