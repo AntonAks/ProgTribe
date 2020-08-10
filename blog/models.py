@@ -56,7 +56,7 @@ class BlogPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        all_child_pages = self.get_parent().get_children().specific().order_by('-first_published_at')
+        all_child_pages = self.get_parent().get_children().live().specific().order_by('-first_published_at')
 
         archive_posts = []
         for _page in all_child_pages:

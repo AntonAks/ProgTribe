@@ -57,7 +57,7 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        all_child_pages = self.get_children().specific().order_by('-first_published_at')
+        all_child_pages = self.get_children().live().specific().order_by('-first_published_at')
 
         paginator = Paginator(all_child_pages, 6)
 
