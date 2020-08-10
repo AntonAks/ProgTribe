@@ -36,6 +36,7 @@ class BlogPage(Page):
             ('heading', blocks.CharBlock()),
             ('advice_hint', blocks.RichTextBlock()),
             ('warning_hint', blocks.RichTextBlock()),
+            ('terminal_block', blocks.RichTextBlock()),
             ('content', blocks.RichTextBlock()),
             ('image', ImageChooserBlock()),
             ('codeblock', CodeBlock(label='Code'))
