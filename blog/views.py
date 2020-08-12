@@ -11,11 +11,10 @@ except ImportError:
 
 def archive_page_view(request, month_year_key):
 
-    live_pages = BlogPage.objects.live()
+    live_pages = BlogPage.objects.specific().live()
     archive_filtered_list = []
     for page in live_pages:
         if page.first_published_at.strftime("%b %Y") == month_year_key:
-            print(page.first_published_at.strftime("%b %Y"))
             archive_filtered_list.append(page)
 
     archive_posts = []

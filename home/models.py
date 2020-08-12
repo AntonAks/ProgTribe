@@ -1,9 +1,12 @@
 from django.db import models
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from wagtail.core.models import Page
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.core.fields import RichTextField
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core import blocks
+from blog.models import BlogPage
+from django.utils.datastructures import MultiValueDictKeyError
 
 from random import choice
 
@@ -57,7 +60,7 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        all_child_pages = self.get_children().live().specific().order_by('-first_published_at')
+        all_child_pages = self.get_children().live().specific().filter(blogpage__page_category='Common Page').order_by('-first_published_at')
 
         paginator = Paginator(all_child_pages, 6)
 
@@ -84,5 +87,60 @@ class HomePage(Page):
 
         if all_child_pages:
             context["random_post"] = choice(all_child_pages)
+
+        return context
+
+
+class AboutPage(Page):
+    """ Home page for blog """
+
+    template = "home/about_page.html"
+    max_count = 1
+
+    content = StreamField(
+        [
+            ('content', blocks.RichTextBlock())
+        ],
+        blank=True,
+        null=True,
+    )
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+    ]
+
+    class Meta:
+        verbose_name = 'About Page'
+        verbose_name_plural = 'About Pages'
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        live_pages = BlogPage.objects.live().filter(page_category='Common Page')
+
+        archive_posts = []
+        for _page in live_pages:
+            if _page.first_published_at:
+                archive_posts.append(_page.first_published_at.strftime("%b %Y"))
+
+        archive_posts = set(archive_posts)
+        archive_posts = list(archive_posts)
+
+        context["archive_posts"] = archive_posts
+        context["local_site_settings"] = local_site_settings
+
+        if live_pages:
+            context["random_post"] = choice(live_pages)
+
+        if request.method == 'POST':
+            try:
+                feedback_name = request.POST['mainFeedbackForm_Name']
+                feedback_email = request.POST['mainFeedbackForm_EMail']
+                feedback_text = request.POST['mainFeedbackForm_Text']
+
+
+
+            except MultiValueDictKeyError:
+                search_text = ''
 
         return context
