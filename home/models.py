@@ -7,13 +7,16 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from blog.models import BlogPage
 from django.utils.datastructures import MultiValueDictKeyError
+from django.core.mail import send_mail
 
 from random import choice
 
 try:
     from local_site_settings import local_site_settings
+    from local_site_settings import *
 except ImportError:
     from _local_site_settings import local_site_settings
+    from _local_site_settings import *
 
 
 class HomePage(Page):
@@ -138,7 +141,14 @@ class AboutPage(Page):
                 feedback_email = request.POST['mainFeedbackForm_EMail']
                 feedback_text = request.POST['mainFeedbackForm_Text']
 
-
+                send_mail(subject="New Feedback",
+                          message=f"From:{feedback_name} \n"
+                                  f"Mail:{feedback_email} \n"
+                                  f"{feedback_text}",
+                          from_email=EMAIL_HOST_USER,
+                          recipient_list=[EMAIL_HOST_USER],
+                          fail_silently=False
+                          )
 
             except MultiValueDictKeyError:
                 search_text = ''
