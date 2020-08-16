@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'home',
     'search',
 
+    'tools',
     'blog',
     'wagtailcodeblock',
 
