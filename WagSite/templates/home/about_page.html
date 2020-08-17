@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
@@ -13,9 +14,11 @@
 </head>
 {% block content %}
 <body>
-<main role="main" class="container">
+<main id="app" role="main" class="container">
 
-    <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
+
+
+    <h1 class="blog-post-title mt-2">[[page_title]]</h1>
 
     <hr>
     <div class="row">
@@ -49,20 +52,22 @@
             </div>
 
             <!-- Feedback form -->
+            <h1 class="blog-post-title mt-4">Feedback form</h1>
+            <hr>
             <form method="POST" action="">
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="mainFeedbackForm_Name">Name</label>
-                    <input type="text" class="form-control" name="mainFeedbackForm_Name" id="mainFeedbackForm_Name" placeholder="Name">
+                    <input type="text" class="form-control" name="mainFeedbackForm_Name" id="mainFeedbackForm_Name" maxlength="30" placeholder="Name">
                 </div>
                 <div class="form-group">
                     <label for="mainFeedbackForm_EMail">Email address</label>
-                    <input type="email" class="form-control" name="mainFeedbackForm_EMail" id="mainFeedbackForm_EMail" placeholder="name@example.com">
+                    <input type="email" class="form-control" name="mainFeedbackForm_EMail" id="mainFeedbackForm_EMail" maxlength="50" placeholder="name@example.com">
                 </div>
 
                 <div class="form-group">
                     <label for="mainFeedbackForm_Text">Feedback</label>
-                    <textarea class="form-control" name="mainFeedbackForm_Text" id="mainFeedbackForm_Text" rows="6"></textarea>
+                    <textarea class="form-control" name="mainFeedbackForm_Text" id="mainFeedbackForm_Text" maxlength="1000" rows="6"></textarea>
                 </div>
                 {% if feedback_button_activation == True %}
                 <button type="submit" class="btn btn-outline-primary btn-lg">Send</button>
@@ -99,6 +104,17 @@
 
     </div><!-- /.row -->
 </main><!-- /.container -->
+
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script>
+            var app = new Vue({
+                delimiters: ['[[', ']]'],
+                el: '#app',
+                data: {
+                    page_title: "{{ page.title }}"
+                    }
+            });
+        </script>
 
 </body>
 {% endblock content %}
