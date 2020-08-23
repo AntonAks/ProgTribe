@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+
+    {% block title %}
+    <title>{{ page.title }}</title>
+    {% endblock title %}
+</head>
+{% block content %}
+<body>
+<main id="app" role="main" class="container">
+
+
+
+    <h1 class="blog-post-title mt-2">[[page_title]]</h1>
+
+    <hr>
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <div class="blog-post">
+                <p class="h6 text-muted"><em>{{ page.description }}</em></p>
+                <!-- Page content (StreamField) -->
+                {% for block in page.content %}
+                {% if block.block_type == 'heading' %}
+                <h3>{{ block.value }}</h3>
+                {% elif block.block_type == 'image' %}
+                <div id="blog-post-image" class="img-fluid mb-2">
+                    {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
+                </div>
+                {% elif block.block_type == 'codeblock' %}
+                {% include_block block.value %}
+                {% elif block.block_type == 'content' %}
+                <p>{{ block.value }}</p>
+                {% elif block.block_type == 'advice_hint' %}
+                <div class="alert alert-success" role="alert">{{ block.value }}</div>
+                {% elif block.block_type == 'warning_hint' %}
+                <div class="alert alert-warning" role="alert">{{ block.value }}</div>
+                {% elif block.block_type == 'terminal_block' %}
+                <div class="card text-white bg-dark" role="alert">
+                    <div class="card-body">
+                        {{ block.value }}
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+
+            <!-- Feedback form -->
+            <h1 class="blog-post-title mt-4">Feedback form</h1>
+            <hr>
+            <form method="POST" action="">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="mainFeedbackForm_Name" v-model="mainFeedbackForm_Name" maxlength="30" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <input type="email" class="form-control" name="mainFeedbackForm_EMail" v-model="mainFeedbackForm_EMail" maxlength="50" placeholder="name@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Feedback <small >(more than 5 chars)</small> </label>
+                    <textarea class="form-control" name="mainFeedbackForm_Text" v-model="mainFeedbackForm_Text"  maxlength="1000" rows="6" ></textarea>
+                </div>
+                {% if feedback_button_activation == True %}
+                <button type="submit" class="btn btn-outline-primary btn-lg" v-bind:disabled="isButtonDisabled">Send</button>
+                {% else %}
+                <div class="alert alert-info" role="alert">
+                    <p>Thank you for feedback! </p>
+                    <p>You will we able to send next feedback in {{ feedback_time_left }} minute(s)</p>
+                </div>
+
+                {% endif %}
+            </form>
+
+        </div>
+
+        <aside class="col-md-4 blog-sidebar">
+
+            <div class="card mb-3">
+                <div class="card-header">Random post</div>
+                <div class="col p-1 d-flex flex-column position-static">
+                    {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
+                    <div class="card-body">
+                        <h4 class="mb-0">{{ random_post.title }}</h4>
+                        <small class="mb-1 text-muted">{{ random_post.first_published_at }}</small>
+                        <a href="{{ random_post.url }}" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 mb-3 card mb-3">
+                <h4 class="font-italic">Archives</h4>
+                <ol class="list-unstyled mb-0">
+                    {% for archive_page in archive_posts %}
+                    <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </aside><!-- /.blog-sidebar -->
+
+    </div><!-- /.row -->
+</main><!-- /.container -->
+
+<script src="{% static 'js/vue.min.js' %}"></script>
+<script>
+            var app = new Vue({
+                delimiters: ['[[', ']]'],
+                el: '#app',
+                data: {
+                    page_title: "{{ page.title }}",
+                    mainFeedbackForm_Name: "",
+                    mainFeedbackForm_Text: "",
+                    mainFeedbackForm_EMail: ""
+
+            },
+            computed: {
+                isButtonDisabled: function () {
+                    button_disable = true;
+                if (this.mainFeedbackForm_Name.length > 1 && this.mainFeedbackForm_Text.length > 5 && this.mainFeedbackForm_EMail.length > 3) {
+                    button_disable = false;
+                }
+                    return button_disable;
+                }
+            }
+            });
+</script>
+
+</body>
+{% endblock content %}
+
+</html>

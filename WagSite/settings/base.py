@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'home',
     'search',
 
+    'tools',
     'blog',
     'wagtailcodeblock',
 
@@ -171,6 +172,14 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smpt.EmailBackend'
+EMAIL_HOST_USER = ''
+EMAIL_HOST = ''
+EMAIL_PORT = 0
+EMAIL_USE_TLS = True
+EMAILHOST_PASSWORD = ""
+
 
 
 # Wagtail settings

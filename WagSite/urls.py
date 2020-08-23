@@ -13,7 +13,8 @@ from blog import views as blog_views
 from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = [
-    url(r'^django-admin/', admin.site.urls),
+    # url(r'^django-admin/', admin.site.urls),
+    path('dj_admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
