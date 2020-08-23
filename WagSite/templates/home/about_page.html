@@ -51,28 +51,34 @@
                 {% endfor %}
             </div>
 
+
             <!-- Feedback form -->
             <h1 class="blog-post-title mt-4">Feedback form</h1>
             <hr>
             <form method="POST" action="">
                 {% csrf_token %}
+
                 <div class="form-group">
-                    <label for="mainFeedbackForm_Name">Name</label>
-                    <input type="text" class="form-control" name="mainFeedbackForm_Name" id="mainFeedbackForm_Name" maxlength="30" placeholder="Name">
+                    <label>Name</label>
+                    <input type="text" class="form-control" name="mainFeedbackForm_Name" v-model="mainFeedbackForm_Name" maxlength="30" placeholder="Name">
                 </div>
                 <div class="form-group">
-                    <label for="mainFeedbackForm_EMail">Email address</label>
-                    <input type="email" class="form-control" name="mainFeedbackForm_EMail" id="mainFeedbackForm_EMail" maxlength="50" placeholder="name@example.com">
+                    <label>Email address</label>
+                    <input type="email" class="form-control" name="mainFeedbackForm_EMail" v-model="mainFeedbackForm_EMail" maxlength="50" placeholder="name@example.com">
                 </div>
 
                 <div class="form-group">
-                    <label for="mainFeedbackForm_Text">Feedback</label>
-                    <textarea class="form-control" name="mainFeedbackForm_Text" id="mainFeedbackForm_Text" maxlength="1000" rows="6"></textarea>
+                    <label>Feedback <small >(more than 5 chars)</small> </label>
+                    <textarea class="form-control" name="mainFeedbackForm_Text" v-model="mainFeedbackForm_Text"  maxlength="1000" rows="6" ></textarea>
                 </div>
                 {% if feedback_button_activation == True %}
-                <button type="submit" class="btn btn-outline-primary btn-lg">Send</button>
+                <button type="submit" class="btn btn-outline-primary btn-lg" v-bind:disabled="isButtonDisabled">Send</button>
                 {% else %}
-                <button type="submit" class="btn btn-outline-secondary btn-lg" disabled>you can send next feedback in {{ feedback_time_left }} minute(s)</button>
+                <div class="alert alert-info" role="alert">
+                    <p>Thank you for feedback! </p>
+                    <p>You will we able to send next feedback in {{ feedback_time_left }} minute(s)</p>
+                </div>
+
                 {% endif %}
             </form>
 
@@ -111,10 +117,23 @@
                 delimiters: ['[[', ']]'],
                 el: '#app',
                 data: {
-                    page_title: "{{ page.title }}"
-                    }
+                    page_title: "{{ page.title }}",
+                    mainFeedbackForm_Name: "",
+                    mainFeedbackForm_Text: "",
+                    mainFeedbackForm_EMail: ""
+
+            },
+            computed: {
+                isButtonDisabled: function () {
+                    button_disable = true;
+                if (this.mainFeedbackForm_Name.length > 1 && this.mainFeedbackForm_Text.length > 5 && this.mainFeedbackForm_EMail.length > 3) {
+                    button_disable = false;
+                }
+                    return button_disable;
+                }
+            }
             });
-        </script>
+</script>
 
 </body>
 {% endblock content %}

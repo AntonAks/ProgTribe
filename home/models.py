@@ -7,13 +7,13 @@ from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from blog.models import BlogPage
 from tools.models import Feedback
-from django.utils.datastructures import MultiValueDictKeyError
 from django.core.exceptions import ObjectDoesNotExist
 
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 from random import choice
+
 
 try:
     from local_site_settings import local_site_settings
