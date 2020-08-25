@@ -75,7 +75,20 @@
 
           <h3 class="blog-post-title-home">{{ page.title }}</h3>
 
+
         </a>
+          <!-- TAGS start -->
+          {% if page.tags.count %}
+          {% for tag in page.tags.all %}
+          {# Loop through all the existing tags #}
+
+          <a href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
+
+
+          {% endfor %}
+          {% endif %}
+          <!-- TAGS end -->
+
         <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
         <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
         <hr>

@@ -69,14 +69,14 @@ class HomePage(Page):
         verbose_name = 'Blog Home Page'
         verbose_name_plural = 'Blog Home Pages'
 
-    def get_child_pages(self):
-        pages = Page.get_children(self)
-        return pages
-
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
         all_child_pages = self.get_children().live().specific().filter(blogpage__page_category='Common Page').order_by('-first_published_at')
+
+        if request.GET.get('tag', None):
+            tags = request.GET.get('tag')
+            all_child_pages = all_child_pages.filter(blogpage__tags__slug__in=[tags])
 
         paginator = Paginator(all_child_pages, 6)
 

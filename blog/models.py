@@ -6,6 +6,9 @@ from wagtail.core.fields import StreamField, RichTextField
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtailcodeblock.blocks import CodeBlock
+from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
+from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from random import choice
 
@@ -13,6 +16,14 @@ try:
     from local_site_settings import local_site_settings
 except ImportError:
     from _local_site_settings import local_site_settings
+
+
+class BlogPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE,
+    )
 
 
 class BlogPage(Page):
@@ -30,6 +41,7 @@ class BlogPage(Page):
 
     text_intro = RichTextField(blank=False, default='Short description', null=True, max_length=600)
     page_category = CharField(max_length=100, choices=PAGE_CATEGORIES, default='Common Page')
+    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
     content = StreamField(
         [
@@ -48,9 +60,13 @@ class BlogPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('page_category'),
         ImageChooserPanel('title_image'),
+        FieldPanel("tags"),
         FieldPanel('text_intro'),
         StreamFieldPanel('content'),
     ]
+
+    def __str__(self):
+        return f"title: {self.title}, tags: {self.tags}"
 
     def get_title_image(self):
         return self.title_image
