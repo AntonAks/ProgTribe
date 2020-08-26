@@ -5,7 +5,7 @@ from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFiel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
-from blog.models import BlogPage
+from blog.models import BlogPage, BlogPageTag
 from tools.models import Feedback
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -89,16 +89,10 @@ class HomePage(Page):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
 
-        archive_posts = []
-        for _page in all_child_pages:
-            if _page.first_published_at:
-                archive_posts.append(_page.first_published_at.strftime("%b %Y"))
-
-        archive_posts = set(archive_posts)
-        archive_posts = list(archive_posts)
+        all_tags = [i.tag for i in BlogPageTag.objects.all()]
 
         context["sub_pages"] = posts
-        context["archive_posts"] = archive_posts
+        context["all_tags"] = all_tags
         context["local_site_settings"] = local_site_settings
 
         if all_child_pages:
@@ -144,16 +138,9 @@ class AboutPage(Page):
             context["feedback_button_activation"] = True
 
         live_pages = BlogPage.objects.live().filter(page_category='Common Page')
+        all_tags = [i.tag for i in BlogPageTag.objects.all()]
 
-        archive_posts = []
-        for _page in live_pages:
-            if _page.first_published_at:
-                archive_posts.append(_page.first_published_at.strftime("%b %Y"))
-
-        archive_posts = set(archive_posts)
-        archive_posts = list(archive_posts)
-
-        context["archive_posts"] = archive_posts
+        context["all_tags"] = all_tags
         context["local_site_settings"] = local_site_settings
 
         if live_pages:

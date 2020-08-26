@@ -81,26 +81,15 @@
             </div>
 
             <div class="p-4 mb-3 card mb-3">
-                <h4 class="font-italic">Archives</h4>
-                <ol class="list-unstyled mb-0">
-                    {% for archive_page in archive_posts %}
-                    <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
-                    {% endfor %}
-                </ol>
-            </div>
-
-            <div class="p-4 mb-3 card mb-3">
                 <h4 class="font-italic">Tags:</h4>
                 <ol class="list-unstyled mb-0">
                     {# Check if there are tags #}
-                    {% if page.tags.count %}
 
-                    {% for tag in page.tags.all %}
+                    {% for tag in all_tags %}
                     {# Loop through all the existing tags #}
-                    <a href="/?tag={{ tag.slug }}">{{ tag.slug }}</a><br />
-<!--                    <a href="">{{ tag.slug }}</a><br />-->
+                    <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
                     {% endfor %}
-                    {% endif %}
+
                 </ol>
             </div>
         </aside><!-- /.blog-sidebar -->

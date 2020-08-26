@@ -23,11 +23,11 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark shadow-sm">
         <a class="navbar-brand" href="/">{{ local_site_settings.navbar_title }} </a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarColor02">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -61,14 +61,26 @@
     {% endblock content %}
 </div>
 
-<footer>
-    {% block javascript %}
-    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/WagSite.js' %}"></script>
-    {% endblock javascript %}
+
+<footer class="mt-5 text-muted text-center bg-light">
+    <div class="text-secondary mt-2">&copy; Progtribe {% now "Y" %}</div>
+    <div>
+        <small class="text-muted">Developed with Wagtail CMS & Django 3.</small>
+    </div>
+    <div>
+        <small>
+            <a href="/about-page"> More details about project</a>
+        </small>
+    </div>
 </footer>
+
+
+{% block javascript %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/WagSite.js' %}"></script>
+{% endblock javascript %}
 
 </body>
 

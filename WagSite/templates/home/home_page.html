@@ -77,17 +77,16 @@
 
 
         </a>
-          <!-- TAGS start -->
-          {% if page.tags.count %}
-          {% for tag in page.tags.all %}
-          {# Loop through all the existing tags #}
+        <!-- TAGS start -->
+        {% if page.tags.count %}
+        {% for tag in page.tags.all %}
+        {# Loop through all the existing tags #}
 
-          <a href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
+        <a href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
 
-
-          {% endfor %}
-          {% endif %}
-          <!-- TAGS end -->
+        {% endfor %}
+        {% endif %}
+        <!-- TAGS end -->
 
         <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
         <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
@@ -148,11 +147,15 @@
       </div>
 
       <div class="p-4 mb-3 card mb-3">
-        <h4 class="font-italic">Archives</h4>
+        <h4 class="font-italic">Tags:</h4>
         <ol class="list-unstyled mb-0">
-          {% for archive_page in archive_posts %}
-          <li><a href="{% url 'archive_page' archive_page %}">{{ archive_page }}</a></li>
+          {# Check if there are tags #}
+
+          {% for tag in all_tags %}
+          {# Loop through all the existing tags #}
+          <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
           {% endfor %}
+
         </ol>
       </div>
 

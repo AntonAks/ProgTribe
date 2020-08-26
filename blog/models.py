@@ -65,9 +65,6 @@ class BlogPage(Page):
         StreamFieldPanel('content'),
     ]
 
-    def __str__(self):
-        return f"title: {self.title}, tags: {self.tags}"
-
     def get_title_image(self):
         return self.title_image
 
@@ -75,16 +72,11 @@ class BlogPage(Page):
         context = super().get_context(request, *args, **kwargs)
         all_child_pages = self.get_parent().get_children().specific().live().filter(blogpage__page_category='Common Page').order_by('-first_published_at')
 
-        archive_posts = []
-        for _page in all_child_pages:
-            if _page.first_published_at:
-                archive_posts.append(_page.first_published_at.strftime("%b %Y"))
+        all_tags = [i.tag for i in BlogPageTag.objects.all()]
 
-        archive_posts = set(archive_posts)
-        archive_posts = list(archive_posts)
-
-        context["archive_posts"] = archive_posts
         context["local_site_settings"] = local_site_settings
+        context["all_tags"] = all_tags
+
         if all_child_pages:
             context["random_post"] = choice(all_child_pages)
 
