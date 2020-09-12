@@ -1,4 +1,6 @@
 {% load static wagtailuserbar %}
+{% load wagtailcore_tags %}
+{% load wagtail_modeltranslation %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -15,8 +17,6 @@
     {% block title %}{% endblock title %}
 
 </head>
-
-
 
 <body id="home" data-spy="scroll" data-target="">
 <header class="blog-header py-3">
@@ -37,20 +37,20 @@
                     <a class="nav-link" href="/about-page">About Page</a>
                 </li>
             </ul>
-            <!--      <div class="nav-item dropdown">-->
-            <!--        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-            <!--          {{request.LANGUAGE_CODE}}-->
-            <!--        </button>-->
-            <!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-            <!--          {% load wagtail_modeltranslation %}-->
-            <!--          {% get_available_languages_wmt as languages %}-->
-            <!--          {% for language in languages %}-->
-            <!--          <a class="dropdown-item" href="/{{ language }}">-->
-            <!--            <span>{{ language }}</span>-->
-            <!--          </a>-->
-            <!--          {% endfor %}-->
-            <!--        </div>-->
-            <!--      </div>-->
+            <div class="nav-item dropdown">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language:
+                    {{request.LANGUAGE_CODE|upper}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    {% get_available_languages_wmt as languages %}
+                    {% for language in languages %}
+                    <a class="dropdown-item" href="{% change_lang language page %}">
+                        <span> {{ language|upper }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </nav>
 </header>

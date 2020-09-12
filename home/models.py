@@ -1,3 +1,4 @@
+from django.urls import translate_url
 from django.db import models
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from wagtail.core.models import Page
@@ -122,6 +123,11 @@ class AboutPage(Page):
     class Meta:
         verbose_name = 'About Page'
         verbose_name_plural = 'About Pages'
+
+    def get_path_page(self):
+        if self.url_path == '/home/':
+            return "/"
+        return self.slug
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
