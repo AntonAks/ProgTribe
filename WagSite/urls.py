@@ -11,15 +11,10 @@ from search import views as search_views
 
 from django.conf.urls.i18n import i18n_patterns
 
-urlpatterns = [
+urlpatterns = i18n_patterns(
+    url(r'', include(wagtail_urls)),
     path('dj_admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^search/$', search_views.search, name='search'),
-
-]
-
-
-urlpatterns += i18n_patterns(
-    url(r'', include(wagtail_urls)),
 )
