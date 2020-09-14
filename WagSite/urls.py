@@ -13,6 +13,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 urlpatterns = i18n_patterns(
     url(r'', include(wagtail_urls)),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('dj_admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
