@@ -41,9 +41,11 @@
                 {% if block.block_type == 'heading' %}
                 <h3>{{ block.value }}</h3>
                 {% elif block.block_type == 'image' %}
+
                 <div id="blog-post-image" class="img-fluid mb-2">
-                    {% image block.value width-1200 class="img-fluid" alt="Responsive image" %}
+                    {% image block.value width-1200 id="blogImg" class="img-fluid" alt="image" %}
                 </div>
+
                 {% elif block.block_type == 'codeblock' %}
                 {% include_block block.value %}
                 {% elif block.block_type == 'content' %}
