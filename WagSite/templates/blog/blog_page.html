@@ -1,9 +1,9 @@
+<!DOCTYPE html>
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 
-<!doctype html>
-<html lang="en">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
@@ -42,8 +42,8 @@
                 <h3>{{ block.value }}</h3>
                 {% elif block.block_type == 'image' %}
 
-                <div id="blog-post-image" class="img-fluid mb-2">
-                    {% image block.value width-1200 id="blogImg" class="img-fluid" alt="image" %}
+                <div id="blog-post-image" class="img-fluid-class mb-2">
+                    {% image block.value width-1200 id=forloop.counter class="img-fluid" alt="image" %}
                 </div>
 
                 {% elif block.block_type == 'codeblock' %}
@@ -63,7 +63,6 @@
                 {% endif %}
                 {% endfor %}
             </div>
-
 
 
         </div><!-- /.blog-main -->
@@ -99,6 +98,38 @@
     </div><!-- /.row -->
 
 </main><!-- /.container -->
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div>
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+    <div id="caption"></div>
+</div>
+
+<script>
+    // Get the modal
+    let modal = document.getElementById("myModal");
+    const images = document.querySelectorAll(".img-fluid")
+    // set 'click' event listener to all images on page
+    for (const i of images) {
+        i.addEventListener('click', function(event) {
+            let modalImg = document.getElementById("img01");
+            let captionText = document.getElementById("caption");
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        })
+    }
+
+    // Get the <span> element that closes the modal
+    let span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>
 
 </body>
 {% endblock content %}

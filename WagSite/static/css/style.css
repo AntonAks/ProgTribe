@@ -2,7 +2,7 @@ body {
   margin-top: 40px; }
 
 #blog-title-image{
-    width: 1200;
+    width: 1200px;
     overflow: hidden;
     margin: 0;
  }
@@ -16,7 +16,7 @@ body {
 }
 
 #blog-post-image{
-  width: 1200;
+  width: 1200px;
   overflow: hidden;
   margin: 0;
 }
