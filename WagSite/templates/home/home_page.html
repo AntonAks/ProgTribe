@@ -72,11 +72,9 @@
       {% for page in pages %}
       <div class="blog-post">
         <a href="{{ page.slug }}">
-
           <h3 class="blog-post-title-home">{{ page.title }}</h3>
-
-
         </a>
+        <small class="blog-post-title-home">{{ page.text_intro|richtext}}</small>
         <!-- TAGS start -->
         {% if page.tags.count %}
         {% for tag in page.tags.all %}

@@ -65,6 +65,7 @@ MIDDLEWARE = [
 WAGTAIL_CODE_BLOCK_THEME = 'coy'
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('bash', 'Bash/Shell'),
+    ('sql', 'SQL'),
     ('css', 'CSS'),
     ('diff', 'diff'),
     ('html', 'HTML'),

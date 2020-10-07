@@ -1,4 +1,3 @@
-from django.urls import translate_url
 from django.db import models
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from wagtail.core.models import Page
