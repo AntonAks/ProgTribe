@@ -89,7 +89,7 @@ class HomePage(Page):
         except EmptyPage:
             posts = paginator.page(paginator.num_pages)
 
-        all_tags = [i.tag for i in BlogPageTag.objects.all()]
+        all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
 
         context["sub_pages"] = posts
         context["all_tags"] = all_tags

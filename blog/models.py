@@ -72,7 +72,7 @@ class BlogPage(Page):
         context = super().get_context(request, *args, **kwargs)
         all_child_pages = self.get_parent().get_children().specific().live().filter(blogpage__page_category='Common Page').order_by('-first_published_at')
 
-        all_tags = [i.tag for i in BlogPageTag.objects.all()]
+        all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
 
         context["local_site_settings"] = local_site_settings
         context["all_tags"] = all_tags
