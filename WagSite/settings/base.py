@@ -23,6 +23,8 @@ INSTALLED_APPS = [
 
     'tools',
     'blog',
+    'collector',
+    'background_task',
     'wagtailcodeblock',
 
     'wagtail.contrib.forms',
@@ -180,6 +182,9 @@ EMAIL_PORT = 0
 EMAIL_USE_TLS = True
 EMAILHOST_PASSWORD = ""
 
+# Background tasks settings
+BACKGROUND_TASK_RUN_ASYNC = True
+MAX_RUN_TIME = 54000
 
 
 # Wagtail settings
