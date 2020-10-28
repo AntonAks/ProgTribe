@@ -9,6 +9,7 @@ from wagtailcodeblock.blocks import CodeBlock
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 from random import choice
 
@@ -26,8 +27,46 @@ class BlogPageTag(TaggedItemBase):
     )
 
 
-class BlogPage(Page):
+class BlogListingPage(Page):
+    """Listing page lists all the Blog Detail Pages."""
+
     template = "blog/blog_page.html"
+    max_count = 1
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+
+        all_pages = BlogPage.objects.all().live().order_by('-first_published_at')
+
+        if request.GET.get('tag', None):
+            tags = request.GET.get('tag')
+            all_pages = all_pages.filter(blogpage__tags__slug__in=[tags])
+
+        paginator = Paginator(all_pages, 6)
+
+        page = request.GET.get("page")
+
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+        all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
+
+        context["sub_pages"] = posts
+        context["all_tags"] = all_tags
+        context["local_site_settings"] = local_site_settings
+
+        if all_pages:
+            context["random_post"] = choice(all_pages)
+
+        return context
+
+
+class BlogPage(Page):
+    template = "blog/post_details_page.html"
 
     PAGE_CATEGORIES = [('Common Page', 'Common Page'), ('Common Page', 'Single Page')]
 

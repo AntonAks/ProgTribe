@@ -20,7 +20,6 @@
 
 <body>
 
-
 <main role="main" class="container">
   <div class="jumbotron jumbotron-image shadow"
        style="background-image: url('{{img.url}}');
@@ -35,132 +34,46 @@
       {{ self.banner_subtitle|richtext }}
     </p>
   </div>
-  <!--    {% image self.banner_image width-1200 class="img-fluid" alt="Responsive image" %}-->
-
   <div class="row">
-    <div class="col-md-8 blog-main">
+    <div class="container">
       <hr>
-      {% if sub_pages.paginator.num_pages %}
-      <div class="pagination mb-4">
-        {% if sub_pages.has_previous %}
-        <li class="page-item">
-          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
-            <span>&laquo;</span>
-          </a>
-        </li>
-        {% endif %}
-
-        {% for page_num in sub_pages.paginator.page_range %}
-        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
-          <a href="?page={{ page_num }}" class="page-link">
-            {{ page_num }}
-          </a>
-        </li>
-        {% endfor %}
-
-        {% if sub_pages.has_next %}
-        <li class="page-item">
-          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
-            <span>&raquo;</span>
-          </a>
-        </li>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {% with sub_pages as pages %}
-      {% for page in pages %}
-      <div class="blog-post">
-        <a href="{{ page.slug }}">
-          <h3 class="blog-post-title-home">{{ page.title }}</h3>
-        </a>
-        <small class="blog-post-title-home">{{ page.text_intro|richtext}}</small>
-        <!-- TAGS start -->
-        {% if page.tags.count %}
-        {% for tag in page.tags.all %}
-        {# Loop through all the existing tags #}
-
-        <a href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
-
-        {% endfor %}
-        {% endif %}
-        <!-- TAGS end -->
-
-        <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
-        <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
-        <hr>
-
-      </div><!-- /.blog-post -->
-      {% endfor %}
-      {% endwith %}
-
-      {% if sub_pages.paginator.num_pages %}
-      <div class="pagination mb-4">
-        {% if sub_pages.has_previous %}
-        <li class="page-item">
-          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
-            <span>&laquo;</span>
-          </a>
-        </li>
-        {% endif %}
-
-        {% for page_num in sub_pages.paginator.page_range %}
-        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
-          <a href="?page={{ page_num }}" class="page-link">
-            {{ page_num }}
-          </a>
-        </li>
-        {% endfor %}
-
-        {% if sub_pages.has_next %}
-        <li class="page-item">
-          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
-            <span>&raquo;</span>
-          </a>
-        </li>
-        {% endif %}
-      </div>
-      {% endif %}
-
-
-    </div><!-- /.blog-main -->
-
-    <aside class="col-md-4 blog-sidebar">
-
-      <div class="p-4 mb-3 card mb-3">
-        <h4 class="font-italic">About</h4>
-        <p class="mb-0"><em> {{ self.banner_about|richtext }} </em></p>
-        <a href="/about-page" class="stretched-link"></a>
-      </div>
-
-      <div class="card mb-3">
-        <div class="card-header">Random post</div>
-        <div class="col p-1 d-flex flex-column position-static">
-          {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
-          <div class="card-body">
-            <h4 class="mb-0">{{ random_post.title }}</h4>
-            <small class="mb-1 text-muted">{{ random_post.first_published_at }}</small>
-            <a href="{{ random_post.url }}" class="stretched-link"></a>
-          </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
-
-      <div class="p-4 mb-3 card mb-3">
-        <h4 class="font-italic">Tags:</h4>
-        <ol class="list-unstyled mb-0">
-          {# Check if there are tags #}
-
-          {% for tag in all_tags %}
-          {# Loop through all the existing tags #}
-          <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
-          {% endfor %}
-
-        </ol>
+      <hr>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
       </div>
-
-    </aside><!-- /.blog-sidebar -->
-
-  </div><!-- /.row -->
+    </div>
+  </div>
 </main>
 </body>
 {% endblock content %}

@@ -1,132 +1,151 @@
-<!DOCTYPE html>
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
+{% load wagtail_modeltranslation %}
 
+<!DOCTYPE html>
 <html lang="uk">
 
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    {% block title %}
-    <title>{{ page.title }}</title>
-    {% endblock title %}
-
+  {% block title %}
+  <title> {{ local_site_settings.page_title }} </title>
+  {% endblock title %}
 </head>
 
+
 {% block content %}
-{% image self.title_image width-1200 as img %}
+
 <body>
 
+
 <main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <hr>
+      {% if sub_pages.paginator.num_pages %}
+      <div class="pagination mb-4">
+        {% if sub_pages.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
+            <span>&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
 
-    <div class="jumbotron text-white jumbotron-image shadow"
-         style="background-image: url('{{img.url}}');
-         background-size: cover;
-         background-position: center center;
-         background-repeat: no-repeat;
-         min-height: 350px;">
-    </div>
-    <h1 class="blog-post-title mt-2">{{ page.title }}</h1>
-    <p class="blog-post-meta">{{ page.first_published_at }}</a>
-    </p>
+        {% for page_num in sub_pages.paginator.page_range %}
+        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+        {% endfor %}
 
-    <hr>
-    <div class="row">
-        <div class="col-md-8 blog-main">
-            <div class="blog-post">
-                <p class="h6 text-muted"><em>{{ page.description }}</em></p>
-                <!-- Page content (StreamField) -->
-                {% for block in page.content %}
-                {% if block.block_type == 'heading' %}
-                <h3>{{ block.value }}</h3>
-                {% elif block.block_type == 'image' %}
-                {% image block.value width-1200 id=forloop.counter class="img-fluid" alt="image" %}
-                {% elif block.block_type == 'codeblock' %}
-                {% include_block block.value %}
-                {% elif block.block_type == 'content' %}
-                <p>{{ block.value }}</p>
-                {% elif block.block_type == 'advice_hint' %}
-                <div class="alert alert-success" role="alert">{{ block.value }}</div>
-                {% elif block.block_type == 'warning_hint' %}
-                <div class="alert alert-warning" role="alert">{{ block.value }}</div>
-                {% elif block.block_type == 'terminal_block' %}
-                <div class="card text-white bg-dark" role="alert">
-                    <div class="card-body">
-                        {{ block.value }}
-                    </div>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
+        {% if sub_pages.has_next %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
+            <span>&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% with sub_pages as pages %}
+      {% for page in pages %}
+      <div class="blog-post">
+        <a href="{{ page.slug }}">
+          <h3 class="blog-post-title-home">{{ page.title }}</h3>
+        </a>
+        <small class="blog-post-title-home">{{ page.text_intro|richtext}}</small>
+        <!-- TAGS start -->
+        {% if page.tags.count %}
+        {% for tag in page.tags.all %}
+        {# Loop through all the existing tags #}
+
+        <a href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
+
+        {% endfor %}
+        {% endif %}
+        <!-- TAGS end -->
+
+        <p class="blog-post-meta-home">{{ page.first_published_at }} </p>
+        <!-- <p class="card-text">{% include_block page.text_intro %}</p> -->
+        <hr>
+
+      </div><!-- /.blog-post -->
+      {% endfor %}
+      {% endwith %}
+
+      {% if sub_pages.paginator.num_pages %}
+      <div class="pagination mb-4">
+        {% if sub_pages.has_previous %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.previous_page_number }}" class="page-link">
+            <span>&laquo;</span>
+          </a>
+        </li>
+        {% endif %}
+
+        {% for page_num in sub_pages.paginator.page_range %}
+        <li class="page-item {% if page_num == sub_pages.number %} active {% endif %}">
+          <a href="?page={{ page_num }}" class="page-link">
+            {{ page_num }}
+          </a>
+        </li>
+        {% endfor %}
+
+        {% if sub_pages.has_next %}
+        <li class="page-item">
+          <a href="?page={{ sub_pages.next_page_number }}" class="page-link">
+            <span>&raquo;</span>
+          </a>
+        </li>
+        {% endif %}
+      </div>
+      {% endif %}
 
 
-        </div><!-- /.blog-main -->
+    </div><!-- /.blog-main -->
 
-        <aside class="col-md-4 blog-sidebar">
+    <aside class="col-md-4 blog-sidebar">
 
-            <div class="card mb-3">
-                <div class="card-header">Random post</div>
-                <div class="col p-1 d-flex flex-column position-static">
-                    {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
-                    <div class="card-body">
-                        <h4 class="mb-0">{{ random_post.title }}</h4>
-                        <small class="mb-1 text-muted">{{ random_post.first_published_at }}</small>
-                        <a href="{{ random_post.url }}" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
+      <div class="p-4 mb-3 card mb-3">
+        <h4 class="font-italic">About</h4>
+        <p class="mb-0"><em> {{ self.banner_about|richtext }} </em></p>
+        <a href="/about-page" class="stretched-link"></a>
+      </div>
 
-            <div class="p-4 mb-3 card mb-3">
-                <h4 class="font-italic">Tags:</h4>
-                <ol class="list-unstyled mb-0">
-                    {# Check if there are tags #}
+      <div class="card mb-3">
+        <div class="card-header">Random post</div>
+        <div class="col p-1 d-flex flex-column position-static">
+          {% image random_post.title_image width-300 class="card-img" alt="Responsive image" %}
+          <div class="card-body">
+            <h4 class="mb-0">{{ random_post.title }}</h4>
+            <small class="mb-1 text-muted">{{ random_post.first_published_at }}</small>
+            <a href="{{ random_post.url }}" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
 
-                    {% for tag in all_tags %}
-                    {# Loop through all the existing tags #}
-                    <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
-                    {% endfor %}
+      <div class="p-4 mb-3 card mb-3">
+        <h4 class="font-italic">Tags:</h4>
+        <ol class="list-unstyled mb-0">
+          {# Check if there are tags #}
 
-                </ol>
-            </div>
-        </aside><!-- /.blog-sidebar -->
+          {% for tag in all_tags %}
+          {# Loop through all the existing tags #}
+          <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
+          {% endfor %}
 
-    </div><!-- /.row -->
+        </ol>
+      </div>
 
-</main><!-- /.container -->
+    </aside><!-- /.blog-sidebar -->
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <div>
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-    </div>
-    <div id="caption"></div>
-</div>
-
-<script>
-    // Get the modal
-    let modal = document.getElementById("myModal");
-    const images = document.querySelectorAll(".img-fluid")
-    // set 'click' event listener to all images on page
-    for (const i of images) {
-        i.addEventListener('click', function(event) {
-            let modalImg = document.getElementById("img01");
-            let captionText = document.getElementById("caption");
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-        })
-    }
-
-    // Get the <span> element that closes the modal
-    let span = document.getElementsByClassName("close")[0];
-
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-</script>
-
+  </div><!-- /.row -->
+</main>
 </body>
 {% endblock content %}
 

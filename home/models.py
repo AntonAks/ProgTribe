@@ -78,20 +78,8 @@ class HomePage(Page):
             tags = request.GET.get('tag')
             all_child_pages = all_child_pages.filter(blogpage__tags__slug__in=[tags])
 
-        paginator = Paginator(all_child_pages, 6)
-
-        page = request.GET.get("page")
-
-        try:
-            posts = paginator.page(page)
-        except PageNotAnInteger:
-            posts = paginator.page(1)
-        except EmptyPage:
-            posts = paginator.page(paginator.num_pages)
-
         all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
 
-        context["sub_pages"] = posts
         context["all_tags"] = all_tags
         context["local_site_settings"] = local_site_settings
 
