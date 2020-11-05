@@ -16,11 +16,28 @@
 
 
 {% block content %}
+{% image self.banner_image width-1200 as img %}
 
 <body>
 
 
 <main role="main" class="container">
+
+  <div class="jumbotron jumbotron-image shadow"
+       style="background-image: url('{{img.url}}');
+         background-size: cover;
+         background-position: center center;
+         background-repeat: no-repeat;
+         min-height: 300px;">
+    <h2 class="display-4">
+      {{page.banner_title}}
+    </h2>
+    <p>
+      {{ self.banner_subtitle|richtext }}
+    </p>
+  </div>
+
+
   <div class="row">
     <div class="col-md-8 blog-main">
       <hr>

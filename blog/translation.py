@@ -13,4 +13,7 @@ class TransHomePageTR(TranslationOptions):
 
 @register(BlogListingPage)
 class TransHomePageTR(TranslationOptions):
-    fields = ()
+    fields = (
+        'banner_title',
+        'banner_subtitle'
+    )

@@ -1,6 +1,10 @@
 from django.db import models
 from background_task import background
-from . import get_dou_news, get_itc_news, get_liga_news
+from . import (get_dou_news,
+               get_itc_news,
+               get_liga_news,
+               get_kor_news,
+               get_ain_news)
 
 
 class NewsContent(models.Model):
@@ -42,4 +46,10 @@ def collect_data():
 
     titles, urls = get_liga_news()
     NewsContent.store_to_db('LIGA', titles=titles, urls=urls)
+
+    titles, urls = get_kor_news()
+    NewsContent.store_to_db('KORRESPONDENT', titles=titles, urls=urls)
+
+    titles, urls = get_ain_news()
+    NewsContent.store_to_db('AIN', titles=titles, urls=urls)
 

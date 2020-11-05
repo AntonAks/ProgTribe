@@ -20,7 +20,7 @@
 
 <body>
 
-<main role="main" class="container">
+<main role="main">
   <div class="jumbotron jumbotron-image shadow"
        style="background-image: url('{{img.url}}');
          background-size: cover;
@@ -34,43 +34,69 @@
       {{ self.banner_subtitle|richtext }}
     </p>
   </div>
-  <div class="row">
-    <div class="container">
-      <hr>
-      <div class="row mt-4">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
+
+
+  <p class="h1"><em>Агрегатор статей и новостей из мира IT</em></p>
+  <hr>
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-md-6 mt-3">
+        <h2>DOU</h2>
+        {% for item in dou_news %}
+        <a href="{{item.post_ulr}}">
+          <li>
+            <em>
+              {{item.post_name_title}}
+            </em>
+          </li>
+        </a>
+        {% endfor %}
       </div>
-      <hr>
-      <div class="row mt-4">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
+      <div class="col-md-6 mt-3">
+        <h2>AIN</h2>
+        {% for item in ain_news %}
+        <a href="{{item.post_ulr}}">
+          <li>
+            <em>
+              {{item.post_name_title}}
+            </em>
+          </li>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
+
+
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row mb-2">
+      <div class="col-md-6 mt-3">
+        <h2>ITC</h2>
+        {% for item in itc_news %}
+        <a href="{{item.post_ulr}}">
+          <li>
+            <em>
+              {{item.post_name_title}}
+            </em>
+          </li>
+        </a>
+        {% endfor %}
+
+      </div>
+      <div class="col-md-6 mt-3">
+        <h2>LIGA</h2>
+        {% for item in liga_news %}
+        <a href="{{item.post_ulr}}">
+          <li>
+            <em>
+              {{item.post_name_title}}
+            </em>
+          </li>
+        </a>
+        {% endfor %}
+
       </div>
     </div>
   </div>

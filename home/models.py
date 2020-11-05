@@ -1,11 +1,12 @@
 from django.db import models
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+
 from wagtail.core.models import Page
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.core.fields import RichTextField, StreamField
 from wagtail.core import blocks
 from blog.models import BlogPage, BlogPageTag
+from collector.models import NewsContent
 from tools.models import Feedback
 from django.core.exceptions import ObjectDoesNotExist
 
@@ -72,19 +73,13 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        all_child_pages = self.get_children().live().specific().filter(blogpage__page_category='Common Page').order_by('-first_published_at')
+        news_content = NewsContent.objects.all()
 
-        if request.GET.get('tag', None):
-            tags = request.GET.get('tag')
-            all_child_pages = all_child_pages.filter(blogpage__tags__slug__in=[tags])
-
-        all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
-
-        context["all_tags"] = all_tags
-        context["local_site_settings"] = local_site_settings
-
-        if all_child_pages:
-            context["random_post"] = choice(all_child_pages)
+        context["dou_news"] = [o for o in news_content if o.web_resource_name == 'DOU'][:10]
+        context["ain_news"] = [o for o in news_content if o.web_resource_name == 'AIN'][:10]
+        context["liga_news"] = [o for o in news_content if o.web_resource_name == 'LIGA'][:10]
+        context["itc_news"] = [o for o in news_content if o.web_resource_name == 'ITC'][:10]
+        # context["kor_news"] = [o for o in news_content if o.web_resource_name == 'KORRESPONDENT'][:15]
 
         return context
 
