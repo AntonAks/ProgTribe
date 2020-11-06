@@ -1,4 +1,3 @@
-from .models import BlogPage
 from blog.models import BlogPage, BlogListingPage
 from modeltranslation.translator import TranslationOptions
 from modeltranslation.decorators import register

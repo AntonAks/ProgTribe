@@ -37,11 +37,13 @@
 
 
   <p class="h1"><em>Агрегатор статей и новостей из мира IT</em></p>
+  <small>{{ update_time }}</small>
   <hr>
   <div class="container">
     <div class="row mb-2">
       <div class="col-md-6 mt-3">
         <h2>DOU</h2>
+        <a href="https://dou.ua/" class="badge badge-secondary mb-2">www.dou.ua</a>
         {% for item in dou_news %}
         <a href="{{item.post_ulr}}">
           <li>
@@ -54,6 +56,7 @@
       </div>
       <div class="col-md-6 mt-3">
         <h2>AIN</h2>
+        <a href="https://ain.ua/" class="badge badge-secondary mb-2" >www.ain.ua</a>
         {% for item in ain_news %}
         <a href="{{item.post_ulr}}">
           <li>
@@ -74,6 +77,7 @@
     <div class="row mb-2">
       <div class="col-md-6 mt-3">
         <h2>ITC</h2>
+        <a href="https://itc.ua/" class="badge badge-secondary mb-2" >itc.ua</a>
         {% for item in itc_news %}
         <a href="{{item.post_ulr}}">
           <li>
@@ -87,6 +91,7 @@
       </div>
       <div class="col-md-6 mt-3">
         <h2>LIGA</h2>
+                <a href="https://tech.liga.net/" class="badge badge-secondary mb-2" >liga.net</a>
         {% for item in liga_news %}
         <a href="{{item.post_ulr}}">
           <li>

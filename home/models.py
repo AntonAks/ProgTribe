@@ -75,10 +75,18 @@ class HomePage(Page):
 
         news_content = NewsContent.objects.all()
 
-        context["dou_news"] = [o for o in news_content if o.web_resource_name == 'DOU'][:10]
-        context["ain_news"] = [o for o in news_content if o.web_resource_name == 'AIN'][:10]
-        context["liga_news"] = [o for o in news_content if o.web_resource_name == 'LIGA'][:10]
-        context["itc_news"] = [o for o in news_content if o.web_resource_name == 'ITC'][:10]
+        dou_news = [o for o in news_content if o.web_resource_name == 'DOU'][:12]
+        ain_news = [o for o in news_content if o.web_resource_name == 'AIN'][:12]
+        liga_news = [o for o in news_content if o.web_resource_name == 'LIGA'][:12]
+        itc_news = [o for o in news_content if o.web_resource_name == 'ITC'][:12]
+
+        context["dou_news"] = sorted(dou_news, key=lambda x: x.update_timestamp, reverse=False)
+        context["ain_news"] = sorted(ain_news, key=lambda x: x.update_timestamp, reverse=False)
+        context["liga_news"] = sorted(liga_news, key=lambda x: x.update_timestamp, reverse=False)
+        context["itc_news"] = sorted(itc_news, key=lambda x: x.update_timestamp, reverse=False)
+
+        context['update_time'] = max([o.update_timestamp for o in news_content])
+
         # context["kor_news"] = [o for o in news_content if o.web_resource_name == 'KORRESPONDENT'][:15]
 
         return context

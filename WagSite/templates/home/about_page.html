@@ -105,7 +105,7 @@
 
                     {% for tag in all_tags %}
                     {# Loop through all the existing tags #}
-                    <a style="font-size: 14px" href="/?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
+                    <a style="font-size: 14px" href="/blog?tag={{ tag.slug }}" class="badge badge-primary">{{ tag.slug }}</a> {% if not forloop.last %} {% endif %}
                     {% endfor %}
 
                 </ol>

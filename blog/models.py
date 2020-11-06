@@ -52,10 +52,15 @@ class BlogListingPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        all_pages = BlogPage.objects.all().live().order_by('-first_published_at')
+        all_pages = self.get_children().\
+            live().\
+            specific().\
+            filter(blogpage__page_category='Common Page').\
+            order_by('-first_published_at')
 
         if request.GET.get('tag', None):
             tags = request.GET.get('tag')
+
             all_pages = all_pages.filter(blogpage__tags__slug__in=[tags])
 
         paginator = Paginator(all_pages, 6)

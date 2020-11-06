@@ -47,8 +47,8 @@ def collect_data():
     titles, urls = get_liga_news()
     NewsContent.store_to_db('LIGA', titles=titles, urls=urls)
 
-    titles, urls = get_kor_news()
-    NewsContent.store_to_db('KORRESPONDENT', titles=titles, urls=urls)
+    # titles, urls = get_kor_news()
+    # NewsContent.store_to_db('KORRESPONDENT', titles=titles, urls=urls)
 
     titles, urls = get_ain_news()
     NewsContent.store_to_db('AIN', titles=titles, urls=urls)
