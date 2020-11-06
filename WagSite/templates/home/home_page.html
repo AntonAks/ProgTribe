@@ -2,6 +2,7 @@
 {% load wagtailcore_tags %}
 {% load wagtailimages_tags %}
 {% load wagtail_modeltranslation %}
+{% load tz %}
 
 <!DOCTYPE html>
 <html lang="uk">
@@ -37,7 +38,7 @@
 
 
   <p class="h1"><em>Агрегатор статей и новостей из мира IT</em></p>
-  <small>{{ update_time }}</small>
+  <em><small>{{ update_time|timezone:"Europe/Kiev" }} (GMT+2)</small></em>
   <hr>
   <div class="container">
     <div class="row mb-2">
@@ -91,7 +92,7 @@
       </div>
       <div class="col-md-6 mt-3">
         <h2>LIGA</h2>
-                <a href="https://tech.liga.net/" class="badge badge-secondary mb-2" >liga.net</a>
+        <a href="https://tech.liga.net/" class="badge badge-secondary mb-2" >liga.net</a>
         {% for item in liga_news %}
         <a href="{{item.post_ulr}}">
           <li>
