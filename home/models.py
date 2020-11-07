@@ -74,19 +74,27 @@ class HomePage(Page):
 
         news_content = NewsContent.objects.all()
 
-        dou_news = [o for o in news_content if o.web_resource_name == 'DOU'][:12]
-        ain_news = [o for o in news_content if o.web_resource_name == 'AIN'][:12]
-        liga_news = [o for o in news_content if o.web_resource_name == 'LIGA'][:12]
-        itc_news = [o for o in news_content if o.web_resource_name == 'ITC'][:12]
+        dou_news_it = [o for o in news_content if o.web_resource_name == 'DOU_IT'][:12]
+        ain_news_it = [o for o in news_content if o.web_resource_name == 'AIN_IT'][:12]
+        liga_news_it = [o for o in news_content if o.web_resource_name == 'LIGA_IT'][:12]
+        itc_news_it = [o for o in news_content if o.web_resource_name == 'ITC_IT'][:12]
 
-        context["dou_news"] = sorted(dou_news, key=lambda x: x.update_timestamp, reverse=False)
-        context["ain_news"] = sorted(ain_news, key=lambda x: x.update_timestamp, reverse=False)
-        context["liga_news"] = sorted(liga_news, key=lambda x: x.update_timestamp, reverse=False)
-        context["itc_news"] = sorted(itc_news, key=lambda x: x.update_timestamp, reverse=False)
+        liga_news_fin = [o for o in news_content if o.web_resource_name == 'LIGA_FIN'][:20]
+        investing_fin = [o for o in news_content if o.web_resource_name == 'INVESTING_FIN'][:20]
 
-        context['update_time'] = max([o.update_timestamp for o in news_content])
+        context["dou_news_it"] = sorted(dou_news_it, key=lambda x: x.update_timestamp, reverse=False)
+        context["ain_news_it"] = sorted(ain_news_it, key=lambda x: x.update_timestamp, reverse=False)
+        context["liga_news_it"] = sorted(liga_news_it, key=lambda x: x.update_timestamp, reverse=False)
+        context["itc_news_it"] = sorted(itc_news_it, key=lambda x: x.update_timestamp, reverse=False)
 
-        # context["kor_news"] = [o for o in news_content if o.web_resource_name == 'KORRESPONDENT'][:15]
+        context["liga_news_fin"] = sorted(liga_news_fin, key=lambda x: x.update_timestamp, reverse=False)
+        context["investing_fin"] = sorted(investing_fin, key=lambda x: x.update_timestamp, reverse=False)
+
+        try:
+            context['update_time_it'] = max([o.update_timestamp for o in news_content if '_IT' in o.web_resource_name])
+            context['update_time_fin'] = max([o.update_timestamp for o in news_content if '_FIN' in o.web_resource_name])
+        except ValueError:
+            pass
 
         return context
 

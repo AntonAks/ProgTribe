@@ -1,10 +1,12 @@
 from django.db import models
 from background_task import background
-from . import (get_dou_news,
-               get_itc_news,
-               get_liga_news,
-               get_kor_news,
-               get_ain_news)
+from time import sleep
+from . import (get_dou_news_it,
+               get_itc_news_it,
+               get_liga_news_it,
+               get_ain_news_it,
+               get_investing_fin,
+               get_liga_news_fin)
 
 
 class NewsContent(models.Model):
@@ -38,18 +40,25 @@ class NewsContent(models.Model):
 @background()
 def collect_data():
 
-    titles, urls = get_dou_news()
-    NewsContent.store_to_db('DOU', titles=titles, urls=urls)
+    titles, urls = get_dou_news_it()
+    NewsContent.store_to_db('DOU_IT', titles=titles, urls=urls)
 
-    titles, urls = get_itc_news()
-    NewsContent.store_to_db('ITC', titles=titles, urls=urls)
+    titles, urls = get_itc_news_it()
+    NewsContent.store_to_db('ITC_IT', titles=titles, urls=urls)
 
-    titles, urls = get_liga_news()
-    NewsContent.store_to_db('LIGA', titles=titles, urls=urls)
+    titles, urls = get_liga_news_it()
+    NewsContent.store_to_db('LIGA_IT', titles=titles, urls=urls)
 
     # titles, urls = get_kor_news()
     # NewsContent.store_to_db('KORRESPONDENT', titles=titles, urls=urls)
 
-    titles, urls = get_ain_news()
-    NewsContent.store_to_db('AIN', titles=titles, urls=urls)
+    titles, urls = get_ain_news_it()
+    NewsContent.store_to_db('AIN_IT', titles=titles, urls=urls)
 
+    sleep(10)
+
+    titles, urls = get_liga_news_fin()
+    NewsContent.store_to_db('LIGA_FIN', titles=titles, urls=urls)
+
+    titles, urls = get_investing_fin()
+    NewsContent.store_to_db('INVESTING_FIN', titles=titles, urls=urls)
