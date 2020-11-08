@@ -6,7 +6,9 @@ from . import (get_dou_news_it,
                get_liga_news_it,
                get_ain_news_it,
                get_investing_fin,
-               get_liga_news_fin)
+               get_liga_news_fin,
+               get_euro_news_world,
+               get_kor_news_world)
 
 
 class NewsContent(models.Model):
@@ -49,16 +51,17 @@ def collect_data():
     titles, urls = get_liga_news_it()
     NewsContent.store_to_db('LIGA_IT', titles=titles, urls=urls)
 
-    # titles, urls = get_kor_news()
-    # NewsContent.store_to_db('KORRESPONDENT', titles=titles, urls=urls)
-
     titles, urls = get_ain_news_it()
     NewsContent.store_to_db('AIN_IT', titles=titles, urls=urls)
-
-    sleep(10)
 
     titles, urls = get_liga_news_fin()
     NewsContent.store_to_db('LIGA_FIN', titles=titles, urls=urls)
 
     titles, urls = get_investing_fin()
     NewsContent.store_to_db('INVESTING_FIN', titles=titles, urls=urls)
+
+    titles, urls = get_kor_news_world()
+    NewsContent.store_to_db('KORRESPONDENT_WORLD', titles=titles, urls=urls)
+
+    titles, urls = get_euro_news_world()
+    NewsContent.store_to_db('EURONEWS_WORLD', titles=titles, urls=urls)

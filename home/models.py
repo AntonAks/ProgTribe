@@ -82,6 +82,9 @@ class HomePage(Page):
         liga_news_fin = [o for o in news_content if o.web_resource_name == 'LIGA_FIN'][:20]
         investing_fin = [o for o in news_content if o.web_resource_name == 'INVESTING_FIN'][:20]
 
+        kor_news_world = [o for o in news_content if o.web_resource_name == 'KORRESPONDENT_WORLD'][:20]
+        euro_news_world = [o for o in news_content if o.web_resource_name == 'EURONEWS_WORLD'][:20]
+
         context["dou_news_it"] = sorted(dou_news_it, key=lambda x: x.update_timestamp, reverse=False)
         context["ain_news_it"] = sorted(ain_news_it, key=lambda x: x.update_timestamp, reverse=False)
         context["liga_news_it"] = sorted(liga_news_it, key=lambda x: x.update_timestamp, reverse=False)
@@ -90,9 +93,14 @@ class HomePage(Page):
         context["liga_news_fin"] = sorted(liga_news_fin, key=lambda x: x.update_timestamp, reverse=False)
         context["investing_fin"] = sorted(investing_fin, key=lambda x: x.update_timestamp, reverse=False)
 
+        context["kor_news_world"] = sorted(kor_news_world, key=lambda x: x.update_timestamp, reverse=False)
+        context["euro_news_world"] = sorted(euro_news_world, key=lambda x: x.update_timestamp, reverse=False)
+
+
         try:
             context['update_time_it'] = max([o.update_timestamp for o in news_content if '_IT' in o.web_resource_name])
             context['update_time_fin'] = max([o.update_timestamp for o in news_content if '_FIN' in o.web_resource_name])
+            context['update_time_fin'] = max([o.update_timestamp for o in news_content if '_WORLD' in o.web_resource_name])
         except ValueError:
             pass
 

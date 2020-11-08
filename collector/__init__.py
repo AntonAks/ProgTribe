@@ -111,9 +111,6 @@ def get_liga_news_fin() -> tuple:
                 post_urls.append(a.get('href'))
                 post_names.append(str(a.getText()).strip())
 
-    for i in range(0, len(post_names)):
-        print(post_names[i], post_urls[i])
-
     return post_names, post_urls
 
 
@@ -140,49 +137,50 @@ def get_investing_fin() -> tuple:
 
     return post_names, post_urls
 
-#
-# def get_kor_news_it() -> tuple:
-#     site = "https://korrespondent.net/business/web/"
-#     hdr = {'User-Agent': 'Mozilla/5.0'}
-#     req = Request(site, headers=hdr)
-#     page = urlopen(req)
-#     soup = BeautifulSoup(page, "html.parser")
-#
-#     items = soup.find_all(class_='article article_rubric_top')
-#
-#     post_names = []
-#     post_urls = []
-#
-#     for i in items:
-#         a_tags = i.find_all('a')
-#         for a in a_tags:
-#             if len(str(a.getText())) > 2 and "https://" in a.get('href') :
-#                 post_urls.append(a.get('href'))
-#                 post_names.append(str(a.getText()).strip().replace("Сюжет", ""))
-#
-#
-#     return post_names, post_urls
-#
-#
-# def get_tproger_news_it() -> tuple:
-#     site = "https://tproger.ru/top/month/"
-#     hdr = {'User-Agent': 'Mozilla/5.0'}
-#     req = Request(site, headers=hdr)
-#     page = urlopen(req)
-#     soup = BeautifulSoup(page, "html.parser")
-#
-#     items = soup.find_all(class_='article-link')
-#     text = soup.find_all(class_='entry-title')
-#
-#     post_names = []
-#     post_urls = []
-#
-#     for i in range(0, len(items)):
-#         post_names.append(text[i].getText())
-#         post_urls.append(items[i].get('href'))
-#
-#     return post_names, post_urls
-#
+
+def get_kor_news_world() -> tuple:
+    site = "https://korrespondent.net/world/"
+    hdr = {'User-Agent': 'Mozilla/5.0'}
+    req = Request(site, headers=hdr)
+    page = urlopen(req)
+    soup = BeautifulSoup(page, "html.parser")
+
+    unit_rubric = soup.find(class_='unit-rubric')
+
+    items = unit_rubric.find_all(class_='article__title')
+
+    post_names = []
+    post_urls = []
+
+    for i in items:
+        a_tags = i.find_all('a')
+        for a in a_tags:
+            if len(str(a.getText())) > 2 and "https://" in a.get('href'):
+                post_urls.append(a.get('href'))
+                post_names.append(str(a.getText()).strip().replace("Сюжет", ""))
+
+    return post_names, post_urls
+
+
+def get_euro_news_world() -> tuple:
+    site = "https://ru.euronews.com/programs/world"
+    hdr = {'User-Agent': 'Mozilla/5.0'}
+    req = Request(site, headers=hdr)
+    page = urlopen(req)
+    soup = BeautifulSoup(page, "html.parser")
+
+    listing_articles_block = soup.find(class_='o-block-listing__articles')
+
+    articles = listing_articles_block.find_all(class_='m-object__title__link')
+
+    post_names = []
+    post_urls = []
+
+    for i in articles:
+        post_names.append(i.getText().strip())
+        post_urls.append('https://ru.euronews.com' + i.get('href'))
+
+    return post_names, post_urls
 
 
 if __name__ == '__main__':

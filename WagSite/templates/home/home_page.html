@@ -39,25 +39,29 @@
 
   <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-it" role="tab" aria-controls="pills-home" aria-selected="true">Новости IT сферы</a>
+      <a class="nav-link active" id="pills-it-tab" data-toggle="pill" href="#pills-it" role="tab" aria-controls="pills-home" aria-selected="true">Новости IT сферы</a>
     </li>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-fin" role="tab" aria-controls="pills-profile" aria-selected="false">Новости финансов</a>
+      <a class="nav-link" id="pills-fin-tab" data-toggle="pill" href="#pills-fin" role="tab" aria-controls="pills-profile" aria-selected="false">Новости финансов</a>
     </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-world-tab" data-toggle="pill" href="#pills-world" role="tab" aria-controls="pills-profile" aria-selected="false">Новости мира</a>
+    </li>
+
   </ul>
   <div class="tab-content" id="pills-tabContent">
 
-    <div class="tab-pane fade show active" id="pills-it" role="tabpanel" aria-labelledby="pills-home-tab">
-      <p class="h1"><em>Агрегатор статей и новостей из мира IT</em></p>
+    <div class="tab-pane fade show active" id="pills-it" role="tabpanel" aria-labelledby="pills-it-tab">
+      <p class="h1"><em>Новости и статьи из мира IT</em></p>
       <em><small>{{ update_time_it|timezone:"Europe/Kiev" }} (GMT+2)</small></em>
       <hr>
       <div class="container">
         <div class="row mb-2">
           <div class="col-md-6 mt-3">
             <h2>DOU</h2>
-            <a href="https://dou.ua/" class="badge badge-secondary mb-2">www.dou.ua</a>
+            <a href="https://dou.ua/" target="_blank" class="badge badge-secondary mb-2">www.dou.ua</a>
             {% for item in dou_news_it %}
-            <a href="{{item.post_ulr}}">
+            <a href="{{item.post_ulr}}" target="_blank">
               <li>
                 <em>
                   {{item.post_name_title}}
@@ -68,9 +72,9 @@
           </div>
           <div class="col-md-6 mt-3">
             <h2>AIN</h2>
-            <a href="https://ain.ua/" class="badge badge-secondary mb-2" >www.ain.ua</a>
+            <a href="https://ain.ua/" target="_blank" class="badge badge-secondary mb-2" >www.ain.ua</a>
             {% for item in ain_news_it %}
-            <a href="{{item.post_ulr}}">
+            <a href="{{item.post_ulr}}" target="_blank">
               <li>
                 <em>
                   {{item.post_name_title}}
@@ -86,7 +90,7 @@
         <div class="row mb-2">
           <div class="col-md-6 mt-3">
             <h2>ITC</h2>
-            <a href="https://itc.ua/" class="badge badge-secondary mb-2" >itc.ua</a>
+            <a href="https://itc.ua/" target="_blank" class="badge badge-secondary mb-2" >www.itc.ua</a>
             {% for item in itc_news_it %}
             <a href="{{item.post_ulr}}">
               <li>
@@ -100,9 +104,9 @@
           </div>
           <div class="col-md-6 mt-3">
             <h2>LIGA</h2>
-            <a href="https://tech.liga.net/" class="badge badge-secondary mb-2" >liga.net</a>
+            <a href="https://tech.liga.net/" target="_blank" class="badge badge-secondary mb-2" >www.liga.net</a>
             {% for item in liga_news_it %}
-            <a href="{{item.post_ulr}}">
+            <a href="{{item.post_ulr}}" target="_blank">
               <li>
                 <em>
                   {{item.post_name_title}}
@@ -116,7 +120,7 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="pills-fin" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="tab-pane fade" id="pills-fin" role="tabpanel" aria-labelledby="pills-fin-tab">
       <p class="h1"><em>Новости финансов</em></p>
       <em><small>{{ update_time_fin|timezone:"Europe/Kiev" }} (GMT+2)</small></em>
       <hr>
@@ -124,7 +128,7 @@
         <div class="row mb-2">
           <div class="col-md-6 mt-3">
             <h2>LIGA Finance</h2>
-            <a href="https://finance.liga.net/news" class="badge badge-secondary mb-2" >finance.liga.net</a>
+            <a href="https://finance.liga.net/news" target="_blank" class="badge badge-secondary mb-2" >www.finance.liga.net</a>
             {% for item in liga_news_fin %}
             <a href="{{item.post_ulr}}">
               <li>
@@ -138,9 +142,9 @@
           </div>
           <div class="col-md-6 mt-3">
             <h2>INVESTING</h2>
-            <a href="https://www.investing.com/" class="badge badge-secondary mb-2" >www.investing.com</a>
+            <a href="https://www.investing.com/" target="_blank" class="badge badge-secondary mb-2" >www.investing.com</a>
             {% for item in investing_fin %}
-            <a href="{{item.post_ulr}}">
+            <a href="{{item.post_ulr}}" target="_blank">
               <li>
                 <em>
                   {{item.post_name_title}}
@@ -153,6 +157,46 @@
         </div>
       </div>
     </div>
+
+    <div class="tab-pane fade" id="pills-world" role="tabpanel" aria-labelledby="pills-world-tab">
+      <p class="h1"><em>Новости мира</em></p>
+      <em><small>{{ update_time_fin|timezone:"Europe/Kiev" }} (GMT+2)</small></em>
+      <hr>
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-md-6 mt-3">
+            <h2>EURONEWS</h2>
+            <a href="https://ru.euronews.com/" target="_blank" class="badge badge-secondary mb-2" >www.euronews.com</a>
+            {% for item in euro_news_world %}
+            <a href="{{item.post_ulr}}" target="_blank">
+              <li>
+                <em>
+                  {{item.post_name_title}}
+                </em>
+              </li>
+            </a>
+            {% endfor %}
+
+          </div>
+          <div class="col-md-6 mt-3">
+            <h2>KORRESPONDENT</h2>
+            <a href="https://korrespondent.net/world/" target="_blank" class="badge badge-secondary mb-2" >www.korrespondent.net</a>
+            {% for item in kor_news_world %}
+            <a href="{{item.post_ulr}}" target="_blank">
+              <li>
+                <em>
+                  {{item.post_name_title}}
+                </em>
+              </li>
+            </a>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </main>
 </body>
