@@ -72,12 +72,12 @@ class HomePage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        news_content = NewsContent.objects.all()
+        news_content = NewsContent.objects.all().order_by("update_timestamp")
 
-        dou_news_it = [o for o in news_content if o.web_resource_name == 'DOU_IT'][:12]
-        ain_news_it = [o for o in news_content if o.web_resource_name == 'AIN_IT'][:12]
-        liga_news_it = [o for o in news_content if o.web_resource_name == 'LIGA_IT'][:12]
-        itc_news_it = [o for o in news_content if o.web_resource_name == 'ITC_IT'][:12]
+        dou_news_it = [o for o in news_content if o.web_resource_name == 'DOU_IT'][:15]
+        ain_news_it = [o for o in news_content if o.web_resource_name == 'AIN_IT'][:15]
+        liga_news_it = [o for o in news_content if o.web_resource_name == 'LIGA_IT'][:15]
+        itc_news_it = [o for o in news_content if o.web_resource_name == 'ITC_IT'][:15]
 
         liga_news_fin = [o for o in news_content if o.web_resource_name == 'LIGA_FIN'][:20]
         investing_fin = [o for o in news_content if o.web_resource_name == 'INVESTING_FIN'][:20]
@@ -95,7 +95,6 @@ class HomePage(Page):
 
         context["kor_news_world"] = sorted(kor_news_world, key=lambda x: x.update_timestamp, reverse=False)
         context["euro_news_world"] = sorted(euro_news_world, key=lambda x: x.update_timestamp, reverse=False)
-
 
         try:
             context['update_time_it'] = max([o.update_timestamp for o in news_content if '_IT' in o.web_resource_name])

@@ -1,7 +1,17 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.request import Request, urlopen
+import requests
+import json
 from background_task import background
+
+
+def get_currency() -> list or None:
+
+    resp = requests.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5")
+
+    if resp.status_code == 200:
+        return json.loads(resp.text)
 
 
 def get_dou_news_it() -> tuple:
@@ -183,5 +193,3 @@ def get_euro_news_world() -> tuple:
     return post_names, post_urls
 
 
-if __name__ == '__main__':
-    pass
