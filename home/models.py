@@ -148,7 +148,7 @@ class AboutPage(Page):
             context["feedback_button_activation"] = True
 
         live_pages = BlogPage.objects.live().filter(page_category='Common Page')
-        all_tags = [i.tag for i in BlogPageTag.objects.all()]
+        all_tags = list(set([i.tag for i in BlogPageTag.objects.all()]))
 
         context["all_tags"] = all_tags
         context["local_site_settings"] = local_site_settings
