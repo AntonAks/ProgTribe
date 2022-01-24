@@ -69,7 +69,7 @@ starkbank-ecdsa==2.0.1
 tablib==2.0.0
 toml==0.10.1
 Unidecode==1.1.1
-urllib3==1.25.10
+urllib3==1.26.5
 wagtail==2.11.8
 wagtail-modeltranslation==0.10.14
 wagtailcodeblock==1.17.1.0
